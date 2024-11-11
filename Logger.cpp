@@ -1,30 +1,60 @@
 #include "Logger.h"
 
-Logger::Logger(const std::string& filename) : log_file(filename, std::ios::app) {
-    if (!log_file.is_open()) {
-        handleError("Не удалось открыть файл журнала: " + filename);
-    }
+Logger::Logger(const std::string& filename) : filename(filename), is_open(false) {}
+void Logger::setLogFile(const std::string& filename) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    this->filename = filename; 
 }
 
 Logger::~Logger() {
-    if (log_file.is_open()) {
-        log_file.close();
+        close(); 
+    }
+
+void Logger::open() {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!is_open) {
+        log_file.open(filename, std::ios::app);
+        if (!log_file.is_open()) {
+            std::string error_message = "Не удалось получить доступ к " + filename + ": " + strerror(errno) + 
+                                         ". В директории запуска сервера создан файл с логами: vcalc.log";
+            std::cout <<error_message << std::endl;
+            log_file.open("vcalc.log", std::ios::app);
+            if (!log_file.is_open()) {
+                handleError("Не удалось открыть файл журнала: vcalc.log");
+            } else {
+                is_open = true;
+                this->filename = "vcalc.log"; 
+            }
+        } else {
+            is_open = true;
+        }
     }
 }
 
+
+void Logger::close() {
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (is_open) {
+            log_file.close();
+            is_open = false;
+        }
+    }
+
 void Logger::log(LogLevel level, const std::string& message) {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    if (log_file.is_open()) {
+        std::lock_guard<std::mutex> lock(mutex_);
+
+        if (!is_open) {
+            handleError("Файл журнала закрыт: " + filename);
+            return;
+        }
+
         log_file << currentDateTime() << " [" << logLevelToString(level) << "] " << message << std::endl;
         std::cout << currentDateTime() << " [" << logLevelToString(level) << "] " << message << std::endl;
+
         if (level == CRITICAL) {
-            std::cerr << "Критическая ошибка: " << message << std::endl;
+            handleError("Критическая ошибка: " + message);
         }
-    } else {
-        handleError("Файл журнала не открыт, сообщение не может быть записано: " + message);
     }
-}
 
 void Logger::handleError(const std::string& error_message) {
     std::cerr << error_message << std::endl;
@@ -50,3 +80,9 @@ std::string Logger::logLevelToString(LogLevel level) {
         default: return "UNKNOWN";
     }
 }
+
+
+std::string Logger::getLogFile() const {
+    return filename;
+}
+
