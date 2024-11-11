@@ -27,7 +27,7 @@ Server::Server(int port, const std::string& data, Logger& logger)
         std::string error_message = strerror(errno);
         std::string exception_message = "Ошибка создания сокета: " + error_message;
         logger.log(CRITICAL, exception_message);
-        throw std::system_error(errno, std::generic_category(), exception_message);
+        //throw std::system_error(errno, std::generic_category(), exception_message);
     }
 
     sockaddr_in server_addr{};
@@ -39,7 +39,7 @@ Server::Server(int port, const std::string& data, Logger& logger)
         std::string error_message = strerror(errno);
         std::string exception_message = "Ошибка привязки сокета: " + error_message;
         logger.log(CRITICAL, exception_message);
-        throw std::system_error(errno, std::generic_category(), exception_message);
+        //throw std::system_error(errno, std::generic_category(), exception_message);
     }
 
     listen_socket();
