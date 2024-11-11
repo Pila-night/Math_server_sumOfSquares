@@ -5,7 +5,7 @@ RELEASE_FLAGS = -O2 -Wall -DNDEBUG -Iheaders
 DEBUG_FLAGS   = -g -O0 -Wall -Iheaders
 RELEASE_EXEC  = sumOfSquares
 DEBUG_EXEC    = sumOfSquares-dbg
-SOURCES       = main.cpp Auth.cpp ClientDataBase.cpp Communicator.cpp HandlerVector.cpp Logger.cpp server.cpp
+SOURCES       = main.cpp Auth.cpp ClientDataBase.cpp Communicator.cpp HandlerVector.cpp Logger.cpp server.cpp StartInterface.cpp
 LIBARY        = -lboost_program_options -lcryptopp
 all: debug release
 
