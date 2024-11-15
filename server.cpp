@@ -20,6 +20,9 @@ Server::Server(int port, const std::string& data, Logger& logger)
     , data(data)
     , logger(logger) 
 {
+	if (port < 1 || port > 65535) {
+        throw std::system_error(EINVAL, std::generic_category(), "Неправильный порт: " + to_string(port));
+    }
     logger.log(INFO, "Создание сервера на порту " + std::to_string(port));
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -27,7 +30,7 @@ Server::Server(int port, const std::string& data, Logger& logger)
         std::string error_message = strerror(errno);
         std::string exception_message = "Ошибка создания сокета: " + error_message;
         logger.log(CRITICAL, exception_message);
-        //throw std::system_error(errno, std::generic_category(), exception_message);
+        throw std::system_error(errno, std::generic_category(), exception_message);
     }
 
     sockaddr_in server_addr{};
@@ -39,7 +42,7 @@ Server::Server(int port, const std::string& data, Logger& logger)
         std::string error_message = strerror(errno);
         std::string exception_message = "Ошибка привязки сокета: " + error_message;
         logger.log(CRITICAL, exception_message);
-        //throw std::system_error(errno, std::generic_category(), exception_message);
+        throw std::system_error(errno, std::generic_category(), exception_message);
     }
 
     listen_socket();
@@ -65,3 +68,5 @@ void Server::start()
         close(client_socket);
     }
 }
+
+
