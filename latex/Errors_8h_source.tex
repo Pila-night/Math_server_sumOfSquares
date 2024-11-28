@@ -1,0 +1,24 @@
+\hypertarget{Errors_8h_source}{}\doxysection{Errors.\+h}
+\mbox{\hyperlink{Errors_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classDatabaseException}{DatabaseException}} : \textcolor{keyword}{public} std::invalid\_argument \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \textcolor{keyword}{explicit} \mbox{\hyperlink{classDatabaseException_a4f9baf4bcec14fd544994365572ab162}{DatabaseException}}(\textcolor{keyword}{const} std::string\& what\_arg)}
+\DoxyCodeLine{24         : std::invalid\_argument(what\_arg) \{\}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{30     \textcolor{keyword}{explicit} \mbox{\hyperlink{classDatabaseException_a78fb17534b07c32e89cae2bbee08903c}{DatabaseException}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* what\_arg)}
+\DoxyCodeLine{31         : std::invalid\_argument(what\_arg) \{\}}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{classCommunicatorException}{CommunicatorException}} : \textcolor{keyword}{public} std::runtime\_error \{}
+\DoxyCodeLine{39 \textcolor{keyword}{public}:}
+\DoxyCodeLine{44     \textcolor{keyword}{explicit} \mbox{\hyperlink{classCommunicatorException_a057cf06e50943054fab5a63996515104}{CommunicatorException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{45         : std::runtime\_error(message) \{\}}
+\DoxyCodeLine{46 \};}
+
+\end{DoxyCode}

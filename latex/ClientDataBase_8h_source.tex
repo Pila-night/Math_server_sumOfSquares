@@ -1,0 +1,24 @@
+\hypertarget{ClientDataBase_8h_source}{}\doxysection{Client\+Data\+Base.\+h}
+\mbox{\hyperlink{ClientDataBase_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classClientDataBase}{ClientDataBase}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25 \textcolor{keyword}{private}:}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{classClientDataBase_a9e581a50cf25472800a60acdbf1d8d50}{loadDatabase}}(\textcolor{keyword}{const} std::string\& filename);}
+\DoxyCodeLine{37     std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classClientDataBase_a870b6435e9f9987bbba9a7cde3f0c957}{database}};}
+\DoxyCodeLine{38 \textcolor{keyword}{public}:}
+\DoxyCodeLine{46     \mbox{\hyperlink{classClientDataBase_a6c9cd7ad989e4810bb3f77f783f41fc8}{ClientDataBase}}(\textcolor{keyword}{const} std::string\& filename);}
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classClientDataBase_a1deb355b82988dd27db7b07c54fcee84}{isLoginExists}}(\textcolor{keyword}{const} std::string\& login);}
+\DoxyCodeLine{58     std::string\& \mbox{\hyperlink{classClientDataBase_ae7ccdd09c1205122d9b9e4622af3810a}{operator[]}}(\textcolor{keyword}{const} std::string\& login);}
+\DoxyCodeLine{64     \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classClientDataBase_ae7ccdd09c1205122d9b9e4622af3810a}{operator[]}}(\textcolor{keyword}{const} std::string\& login) \textcolor{keyword}{const};}
+\DoxyCodeLine{65 \};}
+
+\end{DoxyCode}

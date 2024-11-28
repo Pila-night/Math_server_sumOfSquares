@@ -1,0 +1,39 @@
+\hypertarget{Auth_8h_source}{}\doxysection{Auth.\+h}
+\mbox{\hyperlink{Auth_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ClientDataBase_8h}{ClientDataBase.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <cryptopp/hex.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <cryptopp/osrng.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{20 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{namespace }CPP = CryptoPP;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classAuthenticator}{Authenticator}} \{}
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30     \mbox{\hyperlink{classClientDataBase}{ClientDataBase}} \mbox{\hyperlink{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}{db}};  }
+\DoxyCodeLine{31     \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}};     }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{public}:}
+\DoxyCodeLine{40     \mbox{\hyperlink{classAuthenticator_a475d02077f906548de3db7593af8f229}{Authenticator}}(\textcolor{keyword}{const} std::string\& db\_filename, \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}});}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_acbea4bff4ba3c6f2a8830c72f689de61}{isLoginExists}}(\textcolor{keyword}{const} std::string\& login);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{55     std::string \mbox{\hyperlink{classAuthenticator_af4c0768438bedfa0c65b8036269793d9}{generateSalt}}();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{64     std::string \mbox{\hyperlink{classAuthenticator_aedc5aa2e8c7b90d366f0cfdb56f37fee}{hashPassword}}(\textcolor{keyword}{const} std::string\& salt\_16, \textcolor{keyword}{const} std::string\& password);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_af398c33e9d40b326eb4b2f98eebe4e52}{compareHashes}}(\textcolor{keyword}{const} std::string\& clientHash, \textcolor{keyword}{const} std::string\& salt, \textcolor{keyword}{const} std::string\& login);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_af977d54ed3a7e8ba64527d01c26b80c4}{verifyPassword}}(\textcolor{keyword}{const} std::string\& login, \textcolor{keyword}{const} std::string\& password, \textcolor{keyword}{const} std::string\& salt);}
+\DoxyCodeLine{84 \};}
+
+\end{DoxyCode}

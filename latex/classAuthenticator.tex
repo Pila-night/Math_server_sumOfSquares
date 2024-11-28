@@ -1,0 +1,251 @@
+\hypertarget{classAuthenticator}{}\doxysection{Класс Authenticator}
+\label{classAuthenticator}\index{Authenticator@{Authenticator}}
+
+
+Обрабатывает аутентификацию пользователей по базе данных.  
+
+
+
+
+{\ttfamily \#include $<$Auth.\+h$>$}
+
+
+
+Граф связей класса Authenticator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classAuthenticator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAuthenticator_a475d02077f906548de3db7593af8f229}{Authenticator}} (const std\+::string \&db\+\_\+filename, \mbox{\hyperlink{classLogger}{Logger}} \&\mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}})
+\begin{DoxyCompactList}\small\item\em Конструктор объекта \mbox{\hyperlink{classAuthenticator}{Authenticator}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAuthenticator_acbea4bff4ba3c6f2a8830c72f689de61}{is\+Login\+Exists}} (const std\+::string \&login)
+\begin{DoxyCompactList}\small\item\em Проверяет, существует ли логин в базе данных. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAuthenticator_af4c0768438bedfa0c65b8036269793d9}{generate\+Salt}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует случайную соль длиной 16 символов в шестнадцатеричном формате. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAuthenticator_aedc5aa2e8c7b90d366f0cfdb56f37fee}{hash\+Password}} (const std\+::string \&salt\+\_\+16, const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em Хэширует пароль с использованием SHA224 и заданной солью. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAuthenticator_af398c33e9d40b326eb4b2f98eebe4e52}{compare\+Hashes}} (const std\+::string \&client\+Hash, const std\+::string \&salt, const std\+::string \&login)
+\begin{DoxyCompactList}\small\item\em Сравнивает полученный от клиента хэш с сгенерированным на сервере. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAuthenticator_af977d54ed3a7e8ba64527d01c26b80c4}{verify\+Password}} (const std\+::string \&login, const std\+::string \&password, const std\+::string \&salt)
+\begin{DoxyCompactList}\small\item\em Проверяет пароль пользователя в базе данных. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classClientDataBase}{Client\+Data\+Base}} \mbox{\hyperlink{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}{db}}
+\begin{DoxyCompactList}\small\item\em База данных для хранения учетных данных пользователей. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLogger}{Logger}} \& \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}
+\begin{DoxyCompactList}\small\item\em Объект логгера для записи событий аутентификации. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Обрабатывает аутентификацию пользователей по базе данных. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classAuthenticator_a475d02077f906548de3db7593af8f229}\label{classAuthenticator_a475d02077f906548de3db7593af8f229}} 
+\index{Authenticator@{Authenticator}!Authenticator@{Authenticator}}
+\index{Authenticator@{Authenticator}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{Authenticator()}{Authenticator()}}
+{\footnotesize\ttfamily Authenticator\+::\+Authenticator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{db\+\_\+filename,  }\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger }\end{DoxyParamCaption})}
+
+
+
+Конструктор объекта \mbox{\hyperlink{classAuthenticator}{Authenticator}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em db\+\_\+filename} & Путь к файлу базы данных. \\
+\hline
+{\em logger} & Ссылка на объект логгера. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7     : \mbox{\hyperlink{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}{db}}(db\_filename), \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}(\mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}) }
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classAuthenticator_af398c33e9d40b326eb4b2f98eebe4e52}\label{classAuthenticator_af398c33e9d40b326eb4b2f98eebe4e52}} 
+\index{Authenticator@{Authenticator}!compareHashes@{compareHashes}}
+\index{compareHashes@{compareHashes}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{compareHashes()}{compareHashes()}}
+{\footnotesize\ttfamily bool Authenticator\+::compare\+Hashes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{client\+Hash,  }\item[{const std\+::string \&}]{salt,  }\item[{const std\+::string \&}]{login }\end{DoxyParamCaption})}
+
+
+
+Сравнивает полученный от клиента хэш с сгенерированным на сервере. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+Hash} & Хэш, полученный от клиента. \\
+\hline
+{\em salt} & Соль, использованная для хэширования. \\
+\hline
+{\em login} & Логин пользователя. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+True, если хэши совпадают, иначе false. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     \textcolor{keywordtype}{string} password = \mbox{\hyperlink{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}{db}}[login];}
+\DoxyCodeLine{48     \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}.\mbox{\hyperlink{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}}, \textcolor{stringliteral}{"{}Хэш от клиента: "{}} + clientHash);}
+\DoxyCodeLine{49     std::string generatedHash = \mbox{\hyperlink{classAuthenticator_aedc5aa2e8c7b90d366f0cfdb56f37fee}{hashPassword}}(salt, password);}
+\DoxyCodeLine{50      \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}.\mbox{\hyperlink{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}}, \textcolor{stringliteral}{"{}Cравниваю хэши (Сервер == клиент): "{}} + generatedHash + \textcolor{stringliteral}{"{} == "{}} + clientHash );}
+\DoxyCodeLine{51     \textcolor{keywordflow}{return} generatedHash == clientHash;}
+\DoxyCodeLine{52 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAuthenticator_af4c0768438bedfa0c65b8036269793d9}\label{classAuthenticator_af4c0768438bedfa0c65b8036269793d9}} 
+\index{Authenticator@{Authenticator}!generateSalt@{generateSalt}}
+\index{generateSalt@{generateSalt}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{generateSalt()}{generateSalt()}}
+{\footnotesize\ttfamily string Authenticator\+::generate\+Salt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Генерирует случайную соль длиной 16 символов в шестнадцатеричном формате. 
+
+\begin{DoxyReturn}{Возвращает}
+Сгенерированная соль. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{namespace }CPP = CryptoPP;}
+\DoxyCodeLine{18     \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} salt\_size = 8; \textcolor{comment}{// 64 бита = 8 байт}}
+\DoxyCodeLine{19     CPP::byte salt[salt\_size];}
+\DoxyCodeLine{20     CPP::AutoSeededRandomPool prng;}
+\DoxyCodeLine{21     prng.GenerateBlock(salt, salt\_size);}
+\DoxyCodeLine{22     std::string salt\_16;}
+\DoxyCodeLine{23     CPP::ArraySource(salt, salt\_size, \textcolor{keyword}{true}, \textcolor{keyword}{new} CPP::HexEncoder(\textcolor{keyword}{new} CPP::StringSink(salt\_16)));}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{//тут  дополняем слева нулями до 16 символов}}
+\DoxyCodeLine{26     \textcolor{keywordflow}{while}(salt\_16.length() < 16) \{}
+\DoxyCodeLine{27         salt\_16.insert(salt\_16.begin(), \textcolor{charliteral}{'0'});}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} salt\_16;}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAuthenticator_aedc5aa2e8c7b90d366f0cfdb56f37fee}\label{classAuthenticator_aedc5aa2e8c7b90d366f0cfdb56f37fee}} 
+\index{Authenticator@{Authenticator}!hashPassword@{hashPassword}}
+\index{hashPassword@{hashPassword}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{hashPassword()}{hashPassword()}}
+{\footnotesize\ttfamily string Authenticator\+::hash\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{salt\+\_\+16,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})}
+
+
+
+Хэширует пароль с использованием SHA224 и заданной солью. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em salt\+\_\+16} & Соль длиной 16 символов в шестнадцатеричном формате. \\
+\hline
+{\em password} & Пароль для хэширования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Хэш SHA224 пароля, конкатенированного с солью. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \textcolor{keyword}{namespace }CPP = CryptoPP;}
+\DoxyCodeLine{35     \textcolor{keywordtype}{string} HashAndPass = salt\_16 + password; }
+\DoxyCodeLine{36     CPP::SHA224 hash;                        }
+\DoxyCodeLine{37     CPP::byte digest[CryptoPP::SHA224::DIGESTSIZE];}
+\DoxyCodeLine{38     hash.CalculateDigest(digest, (\textcolor{keyword}{const} CPP::byte*)HashAndPass.data(), HashAndPass.size());}
+\DoxyCodeLine{39     \textcolor{keywordtype}{string} Hash;}
+\DoxyCodeLine{40     CryptoPP::StringSource(digest, \textcolor{keyword}{sizeof}(digest), \textcolor{keyword}{true}, \textcolor{keyword}{new} CryptoPP::HexEncoder(\textcolor{keyword}{new} CryptoPP::StringSink(Hash)));}
+\DoxyCodeLine{41     \mbox{\hyperlink{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}{logger}}.\mbox{\hyperlink{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}}, \textcolor{stringliteral}{"{}Сервер сгенерировал хэш: "{}}+ Hash);}
+\DoxyCodeLine{42     \textcolor{keywordflow}{return} Hash;}
+\DoxyCodeLine{43 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAuthenticator_acbea4bff4ba3c6f2a8830c72f689de61}\label{classAuthenticator_acbea4bff4ba3c6f2a8830c72f689de61}} 
+\index{Authenticator@{Authenticator}!isLoginExists@{isLoginExists}}
+\index{isLoginExists@{isLoginExists}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{isLoginExists()}{isLoginExists()}}
+{\footnotesize\ttfamily bool Authenticator\+::is\+Login\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login }\end{DoxyParamCaption})}
+
+
+
+Проверяет, существует ли логин в базе данных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя для проверки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+True, если логин существует, иначе false. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keywordflow}{return} \mbox{\hyperlink{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}{db}}.\mbox{\hyperlink{classClientDataBase_a1deb355b82988dd27db7b07c54fcee84}{isLoginExists}}(login); }
+\DoxyCodeLine{14 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAuthenticator_af977d54ed3a7e8ba64527d01c26b80c4}\label{classAuthenticator_af977d54ed3a7e8ba64527d01c26b80c4}} 
+\index{Authenticator@{Authenticator}!verifyPassword@{verifyPassword}}
+\index{verifyPassword@{verifyPassword}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{verifyPassword()}{verifyPassword()}}
+{\footnotesize\ttfamily bool Authenticator\+::verify\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login,  }\item[{const std\+::string \&}]{password,  }\item[{const std\+::string \&}]{salt }\end{DoxyParamCaption})}
+
+
+
+Проверяет пароль пользователя в базе данных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя. \\
+\hline
+{\em password} & Пароль пользователя. \\
+\hline
+{\em salt} & Соль, связанная с паролем пользователя. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+True, если пароль валиден, иначе false. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}\label{classAuthenticator_af1d954a93820c0fe7510c1e25523970b}} 
+\index{Authenticator@{Authenticator}!db@{db}}
+\index{db@{db}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{db}{db}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classClientDataBase}{Client\+Data\+Base}} Authenticator\+::db\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+База данных для хранения учетных данных пользователей. 
+
+\mbox{\Hypertarget{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}\label{classAuthenticator_a5528e6dba1ae44cb483f4b3a1cb1ba0a}} 
+\index{Authenticator@{Authenticator}!logger@{logger}}
+\index{logger@{logger}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLogger}{Logger}}\& Authenticator\+::logger\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Объект логгера для записи событий аутентификации. 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Auth_8h}{Auth.\+h}}\item 
+\mbox{\hyperlink{Auth_8cpp}{Auth.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,46 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл main.\+cpp}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include \char`\"{}Start\+Interface.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$boost/program\+\_\+options.\+hpp$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$system\+\_\+error$>$}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a217dbf8b442f20279ea00b898af96f52}{main}} (int argc, const char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_a217dbf8b442f20279ea00b898af96f52}\label{main_8cpp_a217dbf8b442f20279ea00b898af96f52}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{const char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                                           \{}
+\DoxyCodeLine{11     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{12     \mbox{\hyperlink{classInterface}{Interface}} UI;}
+\DoxyCodeLine{13     UI.\mbox{\hyperlink{classInterface_a108a2d31faf4d012849ef4a6564bd033}{processCommands}}(argc, argv);}
+\DoxyCodeLine{14     \mbox{\hyperlink{classServer}{Server}} server(UI.\mbox{\hyperlink{classInterface_a3a5c1db74d78ce7ec5e2f69e8de29f27}{getPort}}(), UI.\mbox{\hyperlink{classInterface_acbaa194caa13f3a40499c7d021074d2a}{getClientDataFile}}(), UI.\mbox{\hyperlink{classInterface_a9bbc78a3023ceddc23e22993fdba3aa8}{getLogger}}());}
+\DoxyCodeLine{15     server.start();}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} exception\& e) \{ }
+\DoxyCodeLine{18         \textcolor{keywordflow}{return} 1; }
+\DoxyCodeLine{19     \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordflow}{return} 0; }
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}

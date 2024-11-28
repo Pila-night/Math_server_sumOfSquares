@@ -1,0 +1,274 @@
+\begin{theindex}
+
+  \item {$\sim$Communicator}
+    \subitem {Communicator}, \hyperpage{18}
+  \item {$\sim$Logger}
+    \subitem {Logger}, \hyperpage{32}
+  \item {$\sim$Server}
+    \subitem {Server}, \hyperpage{40}
+
+  \indexspace
+
+  \item {Auth.cpp}, \hyperpage{43}
+  \item {Auth.h}, \hyperpage{43}
+  \item {Authenticator}, \hyperpage{9}
+    \subitem {Authenticator}, \hyperpage{10}
+    \subitem {compareHashes}, \hyperpage{10}
+    \subitem {db}, \hyperpage{12}
+    \subitem {generateSalt}, \hyperpage{11}
+    \subitem {hashPassword}, \hyperpage{11}
+    \subitem {isLoginExists}, \hyperpage{12}
+    \subitem {logger}, \hyperpage{13}
+    \subitem {verifyPassword}, \hyperpage{12}
+
+  \indexspace
+
+  \item {client\_socket}
+    \subitem {Communicator}, \hyperpage{21}
+  \item {ClientDataBase}, \hyperpage{13}
+    \subitem {ClientDataBase}, \hyperpage{14}
+    \subitem {database}, \hyperpage{16}
+    \subitem {isLoginExists}, \hyperpage{14}
+    \subitem {loadDatabase}, \hyperpage{15}
+    \subitem {operator[]}, \hyperpage{15, 16}
+  \item {ClientDataBase.cpp}, \hyperpage{45}
+  \item {ClientDataBase.h}, \hyperpage{46}
+  \item {close}
+    \subitem {Logger}, \hyperpage{32}
+  \item {Communicator}, \hyperpage{17}
+    \subitem {$\sim$Communicator}, \hyperpage{18}
+    \subitem {client\_socket}, \hyperpage{21}
+    \subitem {Communicator}, \hyperpage{18}
+    \subitem {dataFile}, \hyperpage{21}
+    \subitem {handleClient}, \hyperpage{18}
+    \subitem {logger}, \hyperpage{21}
+    \subitem {processVectors}, \hyperpage{19}
+    \subitem {sendResponse}, \hyperpage{20}
+    \subitem {sendResultToClient}, \hyperpage{20}
+  \item {Communicator.cpp}, \hyperpage{47}
+  \item {Communicator.h}, \hyperpage{48}
+  \item {CommunicatorException}, \hyperpage{22}
+    \subitem {CommunicatorException}, \hyperpage{22}
+  \item {compareHashes}
+    \subitem {Authenticator}, \hyperpage{10}
+  \item {CRITICAL}
+    \subitem {Logger.h}, \hyperpage{56}
+  \item {currentDateTime}
+    \subitem {Logger}, \hyperpage{33}
+
+  \indexspace
+
+  \item {data}
+    \subitem {Server}, \hyperpage{41}
+  \item {database}
+    \subitem {ClientDataBase}, \hyperpage{16}
+  \item {DatabaseException}, \hyperpage{23}
+    \subitem {DatabaseException}, \hyperpage{24}
+  \item {dataFile}
+    \subitem {Communicator}, \hyperpage{21}
+  \item {dataFileName}
+    \subitem {Params}, \hyperpage{37}
+  \item {db}
+    \subitem {Authenticator}, \hyperpage{12}
+  \item {desc}
+    \subitem {Interface}, \hyperpage{30}
+
+  \indexspace
+
+  \item {ERROR}
+    \subitem {Logger.h}, \hyperpage{56}
+  \item {Errors.h}, \hyperpage{50}
+
+  \indexspace
+
+  \item {filename}
+    \subitem {Logger}, \hyperpage{36}
+
+  \indexspace
+
+  \item {generateSalt}
+    \subitem {Authenticator}, \hyperpage{11}
+  \item {getClientDataFile}
+    \subitem {Interface}, \hyperpage{27}
+  \item {getDescription}
+    \subitem {Interface}, \hyperpage{27}
+  \item {GetIsOpen}
+    \subitem {Logger}, \hyperpage{33}
+  \item {getLogFile}
+    \subitem {Logger}, \hyperpage{33}
+  \item {getLogger}
+    \subitem {Interface}, \hyperpage{28}
+  \item {getParams}
+    \subitem {Interface}, \hyperpage{28}
+  \item {getPort}
+    \subitem {Interface}, \hyperpage{28}
+
+  \indexspace
+
+  \item {handleClient}
+    \subitem {Communicator}, \hyperpage{18}
+    \subitem {Server}, \hyperpage{40}
+  \item {handleError}
+    \subitem {Logger}, \hyperpage{33}
+  \item {HandlerVector}, \hyperpage{25}
+    \subitem {processVector}, \hyperpage{25}
+  \item {HandlerVector.cpp}, \hyperpage{51}
+  \item {HandlerVector.h}, \hyperpage{52}
+  \item {hashPassword}
+    \subitem {Authenticator}, \hyperpage{11}
+
+  \indexspace
+
+  \item {INFO}
+    \subitem {Logger.h}, \hyperpage{56}
+  \item {Interface}, \hyperpage{26}
+    \subitem {desc}, \hyperpage{30}
+    \subitem {getClientDataFile}, \hyperpage{27}
+    \subitem {getDescription}, \hyperpage{27}
+    \subitem {getLogger}, \hyperpage{28}
+    \subitem {getParams}, \hyperpage{28}
+    \subitem {getPort}, \hyperpage{28}
+    \subitem {Interface}, \hyperpage{27}
+    \subitem {logger}, \hyperpage{30}
+    \subitem {params}, \hyperpage{30}
+    \subitem {Parser}, \hyperpage{28}
+    \subitem {processCommands}, \hyperpage{29}
+    \subitem {vm}, \hyperpage{30}
+  \item {is\_open}
+    \subitem {Logger}, \hyperpage{36}
+  \item {isLoginExists}
+    \subitem {Authenticator}, \hyperpage{12}
+    \subitem {ClientDataBase}, \hyperpage{14}
+
+  \indexspace
+
+  \item {listen\_socket}
+    \subitem {Server}, \hyperpage{40}
+  \item {loadDatabase}
+    \subitem {ClientDataBase}, \hyperpage{15}
+  \item {log}
+    \subitem {Logger}, \hyperpage{34}
+  \item {log\_file}
+    \subitem {Logger}, \hyperpage{36}
+  \item {logFileName}
+    \subitem {Params}, \hyperpage{37}
+  \item {Logger}, \hyperpage{31}
+    \subitem {$\sim$Logger}, \hyperpage{32}
+    \subitem {close}, \hyperpage{32}
+    \subitem {currentDateTime}, \hyperpage{33}
+    \subitem {filename}, \hyperpage{36}
+    \subitem {GetIsOpen}, \hyperpage{33}
+    \subitem {getLogFile}, \hyperpage{33}
+    \subitem {handleError}, \hyperpage{33}
+    \subitem {is\_open}, \hyperpage{36}
+    \subitem {log}, \hyperpage{34}
+    \subitem {log\_file}, \hyperpage{36}
+    \subitem {Logger}, \hyperpage{32}
+    \subitem {logLevelToString}, \hyperpage{34}
+    \subitem {mutex\_}, \hyperpage{36}
+    \subitem {open}, \hyperpage{35}
+    \subitem {setLogFile}, \hyperpage{35}
+  \item {logger}
+    \subitem {Authenticator}, \hyperpage{13}
+    \subitem {Communicator}, \hyperpage{21}
+    \subitem {Interface}, \hyperpage{30}
+    \subitem {Server}, \hyperpage{41}
+  \item {Logger.cpp}, \hyperpage{54}
+  \item {Logger.h}, \hyperpage{54}
+    \subitem {CRITICAL}, \hyperpage{56}
+    \subitem {ERROR}, \hyperpage{56}
+    \subitem {INFO}, \hyperpage{56}
+    \subitem {LogLevel}, \hyperpage{55}
+    \subitem {WARNING}, \hyperpage{56}
+  \item {LogLevel}
+    \subitem {Logger.h}, \hyperpage{55}
+  \item {logLevelToString}
+    \subitem {Logger}, \hyperpage{34}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{57}
+  \item {main.cpp}, \hyperpage{56}
+    \subitem {main}, \hyperpage{57}
+  \item {mutex\_}
+    \subitem {Logger}, \hyperpage{36}
+
+  \indexspace
+
+  \item {open}
+    \subitem {Logger}, \hyperpage{35}
+  \item {operator[]}
+    \subitem {ClientDataBase}, \hyperpage{15, 16}
+
+  \indexspace
+
+  \item {Params}, \hyperpage{36}
+    \subitem {dataFileName}, \hyperpage{37}
+    \subitem {logFileName}, \hyperpage{37}
+    \subitem {port}, \hyperpage{37}
+  \item {params}
+    \subitem {Interface}, \hyperpage{30}
+  \item {Parser}
+    \subitem {Interface}, \hyperpage{28}
+  \item {port}
+    \subitem {Params}, \hyperpage{37}
+    \subitem {Server}, \hyperpage{41}
+  \item {processCommands}
+    \subitem {Interface}, \hyperpage{29}
+  \item {processVector}
+    \subitem {HandlerVector}, \hyperpage{25}
+  \item {processVectors}
+    \subitem {Communicator}, \hyperpage{19}
+
+  \indexspace
+
+  \item {README.md}, \hyperpage{57}
+
+  \indexspace
+
+  \item {sendResponse}
+    \subitem {Communicator}, \hyperpage{20}
+  \item {sendResultToClient}
+    \subitem {Communicator}, \hyperpage{20}
+  \item {Server}, \hyperpage{38}
+    \subitem {$\sim$Server}, \hyperpage{40}
+    \subitem {data}, \hyperpage{41}
+    \subitem {handleClient}, \hyperpage{40}
+    \subitem {listen\_socket}, \hyperpage{40}
+    \subitem {logger}, \hyperpage{41}
+    \subitem {port}, \hyperpage{41}
+    \subitem {Server}, \hyperpage{39, 40}
+    \subitem {server\_socket}, \hyperpage{41}
+    \subitem {start}, \hyperpage{40}
+  \item {server.cpp}, \hyperpage{57}
+  \item {server.h}, \hyperpage{58}
+  \item {server\_socket}
+    \subitem {Server}, \hyperpage{41}
+  \item {setLogFile}
+    \subitem {Logger}, \hyperpage{35}
+  \item {start}
+    \subitem {Server}, \hyperpage{40}
+  \item {StartInterface.cpp}, \hyperpage{60}
+  \item {StartInterface.h}, \hyperpage{61}
+  \item {SUITE}
+    \subitem {UnitTest.cpp}, \hyperpage{63}
+
+  \indexspace
+
+  \item {UnitTest.cpp}, \hyperpage{62}
+    \subitem {SUITE}, \hyperpage{63}
+
+  \indexspace
+
+  \item {verifyPassword}
+    \subitem {Authenticator}, \hyperpage{12}
+  \item {vm}
+    \subitem {Interface}, \hyperpage{30}
+
+  \indexspace
+
+  \item {WARNING}
+    \subitem {Logger.h}, \hyperpage{56}
+
+\end{theindex}

@@ -1,0 +1,8 @@
+<map id="ClientDataBase.h" name="ClientDataBase.h">
+<area shape="rect" id="node1" title="Заголовочный файл класса ClientDataBase, реализующего работу с базой данных клиентов." alt="" coords="220,5,355,32"/>
+<area shape="rect" id="node2" href="$Auth_8h.html" title="Файл содержит класс Authenticator для аутентификации пользователей." alt="" coords="166,80,230,107"/>
+<area shape="rect" id="node4" href="$Communicator_8cpp.html" title="Реализация класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="235,155,379,181"/>
+<area shape="rect" id="node6" href="$ClientDataBase_8cpp.html" title="Реализация класса ClientDataBase." alt="" coords="325,80,476,107"/>
+<area shape="rect" id="node3" href="$Auth_8cpp.html" title="Файл содержит реализацию класса Authenticator для аутентификации пользователей." alt="" coords="5,155,84,181"/>
+<area shape="rect" id="node5" href="$UnitTest_8cpp.html" title=" " alt="" coords="108,155,211,181"/>
+</map>

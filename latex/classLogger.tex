@@ -1,0 +1,398 @@
+\hypertarget{classLogger}{}\doxysection{Класс Logger}
+\label{classLogger}\index{Logger@{Logger}}
+
+
+Класс для ведения логов в файл.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}} (const std\+::string \&\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}})
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classLogger}{Logger}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_a751cd1a942f2bfce73ec61feaa439d22}{open}} ()
+\begin{DoxyCompactList}\small\item\em Открывает файл для записи логов. Если файл не может быть открыт, выводится сообщение об ошибке и создается файл \char`\"{}vcalc.\+log\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_afee2bab560c2db0190c980884d33868c}{close}} ()
+\begin{DoxyCompactList}\small\item\em Закрывает файл для записи логов. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}{$\sim$\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \mbox{\hyperlink{classLogger}{Logger}}. Закрывает файл логов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}{log}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level, const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение в лог-\/файл. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogger_a15bfbc50a348a24b8ff7c5d49feef1df}{set\+Log\+File}} (const std\+::string \&\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}})
+\begin{DoxyCompactList}\small\item\em Устанавливает новое имя файла для логирования. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLogger_abc0185908102e8fb28a532a017f89b5f}{get\+Log\+File}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает текущее имя файла для логирования. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLogger_aae7b79a065907f8da8280ec1f7295faa}{Get\+Is\+Open}} () const
+\begin{DoxyCompactList}\small\item\em Проверяет открыт ли файл для логирования. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}{handle\+Error}} (const std\+::string \&error\+\_\+message)
+\begin{DoxyCompactList}\small\item\em Обрабатывает ошибку, выводя сообщение на стандартный поток ошибок и выбрасывая исключение. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLogger_a9797db48ffb0b05ec9bf89bd323a36c8}{current\+Date\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает текущую дату и время в формате YYYY-\/\+MM-\/\+DD HH\+:\+MM\+:SS. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLogger_a0a79e30928ea5190c804de90625df930}{log\+Level\+To\+String}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Преобразует уровень логирования в строковое представление. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}}
+\begin{DoxyCompactList}\small\item\em Имя файла для логирования \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\+\_\+open}}
+\begin{DoxyCompactList}\small\item\em Флаг, указывающий открыт ли файл \end{DoxyCompactList}\item 
+std\+::ofstream \mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\+\_\+file}}
+\begin{DoxyCompactList}\small\item\em Поток для записи в файл \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}{mutex\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Мьютекс для обеспечения потокобезопасности \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для ведения логов в файл. 
+
+Обеспечивает потокобезопасное логирование с возможностью указать файл для логов и несколькими уровнями серьезности сообщений. При невозможности записи в указанный файл, пытается создать файл \char`\"{}vcalc.\+log\char`\"{} в директории запуска. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}\label{classLogger_a4f2ee02db1d03a83b6b9b43808e09f15}} 
+\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя файла для логирования. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & Если filename пустой. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                                         \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{classLogger_a15bfbc50a348a24b8ff7c5d49feef1df}{setLogFile}}(\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}});}
+\DoxyCodeLine{16     \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}\label{classLogger_acb668a9e186a25fbaad2e4af6d1ed00a}} 
+\index{Logger@{Logger}!````~Logger@{$\sim$Logger}}
+\index{````~Logger@{$\sim$Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{$\sim$Logger()}{~Logger()}}
+{\footnotesize\ttfamily Logger\+::$\sim$\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \mbox{\hyperlink{classLogger}{Logger}}. Закрывает файл логов. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                 \{}
+\DoxyCodeLine{28     \mbox{\hyperlink{classLogger_afee2bab560c2db0190c980884d33868c}{close}}(); }
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classLogger_afee2bab560c2db0190c980884d33868c}\label{classLogger_afee2bab560c2db0190c980884d33868c}} 
+\index{Logger@{Logger}!close@{close}}
+\index{close@{close}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Logger\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Закрывает файл для записи логов. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55                    \{}
+\DoxyCodeLine{56     std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}{mutex\_}});}
+\DoxyCodeLine{57     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}}) \{}
+\DoxyCodeLine{58         \mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}}.close();}
+\DoxyCodeLine{59         \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_a9797db48ffb0b05ec9bf89bd323a36c8}\label{classLogger_a9797db48ffb0b05ec9bf89bd323a36c8}} 
+\index{Logger@{Logger}!currentDateTime@{currentDateTime}}
+\index{currentDateTime@{currentDateTime}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{currentDateTime()}{currentDateTime()}}
+{\footnotesize\ttfamily std\+::string Logger\+::current\+Date\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Возвращает текущую дату и время в формате YYYY-\/\+MM-\/\+DD HH\+:\+MM\+:SS. 
+
+\begin{DoxyReturn}{Возвращает}
+Текущая дата и время в формате строки. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84                                   \{}
+\DoxyCodeLine{85     time\_t now = time(0);}
+\DoxyCodeLine{86     \textcolor{keyword}{struct }tm tstruct;}
+\DoxyCodeLine{87     \textcolor{keywordtype}{char} buf[80];}
+\DoxyCodeLine{88     localtime\_r(\&now, \&tstruct);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     strftime(buf, \textcolor{keyword}{sizeof}(buf), \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d \%X"{}}, \&tstruct);}
+\DoxyCodeLine{91     \textcolor{keywordflow}{return} buf;}
+\DoxyCodeLine{92 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_aae7b79a065907f8da8280ec1f7295faa}\label{classLogger_aae7b79a065907f8da8280ec1f7295faa}} 
+\index{Logger@{Logger}!GetIsOpen@{GetIsOpen}}
+\index{GetIsOpen@{GetIsOpen}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{GetIsOpen()}{GetIsOpen()}}
+{\footnotesize\ttfamily bool Logger\+::\+Get\+Is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Проверяет открыт ли файл для логирования. 
+
+\begin{DoxyReturn}{Возвращает}
+true если файл открыт, false иначе. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104 \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}}; \} }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_abc0185908102e8fb28a532a017f89b5f}\label{classLogger_abc0185908102e8fb28a532a017f89b5f}} 
+\index{Logger@{Logger}!getLogFile@{getLogFile}}
+\index{getLogFile@{getLogFile}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getLogFile()}{getLogFile()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+Log\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает текущее имя файла для логирования. 
+
+\begin{DoxyReturn}{Возвращает}
+Текущее имя файла. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{106                                    \{}
+\DoxyCodeLine{107     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}};}
+\DoxyCodeLine{108 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}\label{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}} 
+\index{Logger@{Logger}!handleError@{handleError}}
+\index{handleError@{handleError}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void Logger\+::handle\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{error\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обрабатывает ошибку, выводя сообщение на стандартный поток ошибок и выбрасывая исключение. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em error\+\_\+message} & Текст сообщения об ошибке. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79                                                        \{}
+\DoxyCodeLine{80     std::cerr << error\_message << std::endl;}
+\DoxyCodeLine{81     \textcolor{keywordflow}{throw} std::runtime\_error(error\_message);}
+\DoxyCodeLine{82 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}\label{classLogger_a3d3f0801eeaf39b33a906ea8569c19b2}} 
+\index{Logger@{Logger}!log@{log}}
+\index{log@{log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void Logger\+::log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение в лог-\/файл. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em level} & Уровень серьезности сообщения. \\
+\hline
+{\em message} & Текст сообщения. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63                                                          \{}
+\DoxyCodeLine{64     std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}{mutex\_}});}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}}) \{}
+\DoxyCodeLine{67         \mbox{\hyperlink{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}{handleError}}(\textcolor{stringliteral}{"{}Файл журнала закрыт: "{}} + \mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}});}
+\DoxyCodeLine{68         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}} << \mbox{\hyperlink{classLogger_a9797db48ffb0b05ec9bf89bd323a36c8}{currentDateTime}}() << \textcolor{stringliteral}{"{} ["{}} << \mbox{\hyperlink{classLogger_a0a79e30928ea5190c804de90625df930}{logLevelToString}}(level) << \textcolor{stringliteral}{"{}] "{}} << message << std::endl;}
+\DoxyCodeLine{72     std::cout << \mbox{\hyperlink{classLogger_a9797db48ffb0b05ec9bf89bd323a36c8}{currentDateTime}}() << \textcolor{stringliteral}{"{} ["{}} << \mbox{\hyperlink{classLogger_a0a79e30928ea5190c804de90625df930}{logLevelToString}}(level) << \textcolor{stringliteral}{"{}] "{}} << message << std::endl;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordflow}{if} (level == \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}{CRITICAL}}) \{}
+\DoxyCodeLine{75         \mbox{\hyperlink{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}{handleError}}(\textcolor{stringliteral}{"{}Критическая ошибка: "{}} + message);}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_a0a79e30928ea5190c804de90625df930}\label{classLogger_a0a79e30928ea5190c804de90625df930}} 
+\index{Logger@{Logger}!logLevelToString@{logLevelToString}}
+\index{logLevelToString@{logLevelToString}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logLevelToString()}{logLevelToString()}}
+{\footnotesize\ttfamily std\+::string Logger\+::log\+Level\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Преобразует уровень логирования в строковое представление. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em level} & Уровень логирования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строковое представление уровня логирования. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94                                                  \{}
+\DoxyCodeLine{95     \textcolor{keywordflow}{switch} (level) \{}
+\DoxyCodeLine{96         \textcolor{keywordflow}{case} \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}INFO"{}};}
+\DoxyCodeLine{97         \textcolor{keywordflow}{case} \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81}{WARNING}}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}WARNING"{}};}
+\DoxyCodeLine{98         \textcolor{keywordflow}{case} \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90}{ERROR}}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}ERROR"{}};}
+\DoxyCodeLine{99         \textcolor{keywordflow}{case} \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}{CRITICAL}}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}CRITICAL"{}};}
+\DoxyCodeLine{100         \textcolor{keywordflow}{default}: \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}UNKNOWN"{}};}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_a751cd1a942f2bfce73ec61feaa439d22}\label{classLogger_a751cd1a942f2bfce73ec61feaa439d22}} 
+\index{Logger@{Logger}!open@{open}}
+\index{open@{open}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void Logger\+::open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Открывает файл для записи логов. Если файл не может быть открыт, выводится сообщение об ошибке и создается файл \char`\"{}vcalc.\+log\char`\"{}. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31                   \{}
+\DoxyCodeLine{32     std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}{mutex\_}});}
+\DoxyCodeLine{33     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}}) \{}
+\DoxyCodeLine{34         \mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}}.open(\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}}, std::ios::app);}
+\DoxyCodeLine{35         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}}.is\_open()) \{}
+\DoxyCodeLine{36             std::string error\_message = \textcolor{stringliteral}{"{}Не удалось получить доступ к "{}} + \mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}} + \textcolor{stringliteral}{"{}: "{}} + strerror(errno) + }
+\DoxyCodeLine{37                                          \textcolor{stringliteral}{"{}. Попытка создания файла с логами в /tmp."{}};}
+\DoxyCodeLine{38             std::cout << error\_message << std::endl;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41             std::string tmp\_filename = \textcolor{stringliteral}{"{}/tmp/vcalc.log"{}};}
+\DoxyCodeLine{42             \mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}}.open(tmp\_filename, std::ios::app);}
+\DoxyCodeLine{43             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogger_a040bd1e498724fbecef2fee3d529ce9e}{log\_file}}.is\_open()) \{}
+\DoxyCodeLine{44                 \mbox{\hyperlink{classLogger_af25ba4f4062cfc5a5e49e20d4f0bb2ec}{handleError}}(\textcolor{stringliteral}{"{}Не удалось открыть файл журнала: "{}} + tmp\_filename);}
+\DoxyCodeLine{45             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{46                 \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{47                 this-\/>\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}} = tmp\_filename; }
+\DoxyCodeLine{48             \}}
+\DoxyCodeLine{49         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{50             \mbox{\hyperlink{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}{is\_open}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLogger_a15bfbc50a348a24b8ff7c5d49feef1df}\label{classLogger_a15bfbc50a348a24b8ff7c5d49feef1df}} 
+\index{Logger@{Logger}!setLogFile@{setLogFile}}
+\index{setLogFile@{setLogFile}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setLogFile()}{setLogFile()}}
+{\footnotesize\ttfamily void Logger\+::set\+Log\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Устанавливает новое имя файла для логирования. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Новое имя файла. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & Если filename пустой. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19                                                  \{}
+\DoxyCodeLine{20     std::lock\_guard<std::mutex> lock(\mbox{\hyperlink{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}{mutex\_}});}
+\DoxyCodeLine{21     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}}.empty()) \{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Путь к журналу событий не может быть пустым"{}});}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24     this-\/>\mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}} = \mbox{\hyperlink{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}{filename}}; }
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}\label{classLogger_a7d2eb96ffbb512b79834c8d7313c69b7}} 
+\index{Logger@{Logger}!filename@{filename}}
+\index{filename@{filename}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily std\+::string Logger\+::filename\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Имя файла для логирования 
+
+\mbox{\Hypertarget{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}\label{classLogger_aeec6048ba3c8029a7bb999bc42418fe6}} 
+\index{Logger@{Logger}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{is\_open}{is\_open}}
+{\footnotesize\ttfamily bool Logger\+::is\+\_\+open\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Флаг, указывающий открыт ли файл 
+
+\mbox{\Hypertarget{classLogger_a040bd1e498724fbecef2fee3d529ce9e}\label{classLogger_a040bd1e498724fbecef2fee3d529ce9e}} 
+\index{Logger@{Logger}!log\_file@{log\_file}}
+\index{log\_file@{log\_file}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log\_file}{log\_file}}
+{\footnotesize\ttfamily std\+::ofstream Logger\+::log\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Поток для записи в файл 
+
+\mbox{\Hypertarget{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}\label{classLogger_a9e74a559ca8a34e2a0a66c5c8ac1e4fd}} 
+\index{Logger@{Logger}!mutex\_@{mutex\_}}
+\index{mutex\_@{mutex\_}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{mutex\_}{mutex\_}}
+{\footnotesize\ttfamily std\+::mutex Logger\+::mutex\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Мьютекс для обеспечения потокобезопасности 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Logger_8h}{Logger.\+h}}\item 
+\mbox{\hyperlink{Logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}

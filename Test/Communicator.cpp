@@ -3,7 +3,7 @@
 #include "ClientDataBase.h"
 #include "Communicator.h"
 #include "HandlerVector.h"
-
+#include "Errors.h"
 #include <iostream>
 #include <string>
 #include <sys/ioctl.h>
@@ -79,33 +79,31 @@ void Communicator::handleClient()
 
 
 
-void Communicator::processVectors()
-{
+void Communicator::processVectors() {
     logger.log(INFO, "Начинаю обработку векторов");
     uint32_t numVectors = 0;
     ssize_t recvBytes = recv(client_socket, &numVectors, sizeof(numVectors), 0);
-    //uint32_t checkType = htonl(numVectors);
-    if(recvBytes != sizeof(numVectors)) {
+
+    if (recvBytes != sizeof(numVectors)) {
         std::string error_message = strerror(errno);
-        std::string exception_message = "Ошибка получения количества векторов : " + error_message;
+        std::string exception_message = "Ошибка получения количества векторов: " + error_message;
         logger.log(ERROR, exception_message);
         close(client_socket);
-    }  else {
+        return; 
+    }
 
-        logger.log(INFO, "От клиента пришло " + to_string(numVectors) + " векторов");
-        for(uint32_t i = 0; i < numVectors; ++i) {
-        
-            std::vector<int32_t> vectorValues;
-            vectorValues = readVector();
-            if (vectorValues[0] == -1) {
+    logger.log(INFO, "От клиента пришло " + std::to_string(numVectors) + " векторов");
+    
+    for (uint32_t i = 0; i < numVectors; ++i) {
+        try {
+            std::vector<int32_t> vectorValues = readVector();
+            int32_t resultValue = HandlerVector::processVector(vectorValues);
+            logger.log(INFO, "Результат вычисления по " + std::to_string(i + 1) + " вектору: " + std::to_string(resultValue));
+            sendResultToClient(resultValue);
+        } catch (const CommunicatorException& e) {
+            logger.log(WARNING, "Обработка вектора прервана: " + std::string(e.what()));
             break; 
         }
-            
-            int32_t resultValue = HandlerVector::processVector(vectorValues);
-            
-            logger.log(INFO, "Результат вычисления по  " + to_string(i + 1) + " вектору: " + to_string(resultValue));
-            sendResultToClient(resultValue);}
-        
     }
 }
 
@@ -168,14 +166,14 @@ std::vector<int32_t> Communicator::readVector() {
             std::string exception_message = "Ошибка чтения из сокета: " + error_message;
             logger.log(CRITICAL, exception_message);
             close(client_socket); 
-            return {-1}; 
+            throw CommunicatorException(exception_message);
         }
 
         bytesRead += recvBytes;
         if (bytesRead != vectorSize * sizeof(int32_t)) {
-            logger.log(ERROR, "Количество присланных байт не соотвествует типу int32_t");
+            //logger.log(ERROR, "Количество присланных байт не соотвествует типу int32_t");
             close(client_socket);
-            return {-1}; 
+            throw CommunicatorException("Количество присланных байт не соотвествует типу int32_t"); 
         }
     }
 

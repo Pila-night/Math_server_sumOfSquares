@@ -1,5 +1,8 @@
 #include "Auth.h"
-
+/**
+ * @file Auth.cpp
+ * @brief Файл содержит реализацию класса Authenticator для аутентификации пользователей.
+ */
 Authenticator::Authenticator(const std::string& db_filename, Logger& logger)
     : db(db_filename), logger(logger) 
 {
@@ -9,7 +12,7 @@ bool Authenticator::isLoginExists(const std::string& login)
 {
     return db.isLoginExists(login); 
 }
-string Authenticator::generateSALT()
+string Authenticator::generateSalt()
 {
     namespace CPP = CryptoPP;
     constexpr int salt_size = 8; // 64 бита = 8 байт

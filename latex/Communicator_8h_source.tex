@@ -1,0 +1,35 @@
+\hypertarget{Communicator_8h_source}{}\doxysection{Communicator.\+h}
+\mbox{\hyperlink{Communicator_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classCommunicator}{Communicator}} \{}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{private}:}
+\DoxyCodeLine{24     std::string \mbox{\hyperlink{classCommunicator_ad184d547c2ec7932aac78eea60e7a269}{dataFile}};          }
+\DoxyCodeLine{25     \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classCommunicator_a214f4e058ba834f577b2576c479e8b0a}{logger}};                 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} \mbox{\hyperlink{classCommunicator_ad60207d3a06ae5b0f05cb8670c46dc53}{client\_socket}};             }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCommunicator_ad54c9b98698e1fb30bd4090f408ae303}{sendResponse}}(\textcolor{keyword}{const} std::string\& response);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{public}:}
+\DoxyCodeLine{42     \mbox{\hyperlink{classCommunicator_acf8bd15fbadb498b713c380d762d3d5e}{Communicator}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classCommunicator_ad60207d3a06ae5b0f05cb8670c46dc53}{client\_socket}}, \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{classCommunicator_ad184d547c2ec7932aac78eea60e7a269}{dataFile}}, \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classCommunicator_a214f4e058ba834f577b2576c479e8b0a}{logger}});}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCommunicator_a7bc3a90df5f1cff8f199f6d6383ca7cb}{handleClient}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{52     \mbox{\hyperlink{classCommunicator_a4ced5362bf7438924f8d7f1b0c5ec391}{\string~Communicator}}();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCommunicator_aa88ad1f944abf3272ad85ad8653f1576}{processVectors}}();}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCommunicator_af4c1ce0ae7d2c8cba4512f62a9d64cf5}{sendResultToClient}}(int32\_t resultValue);}
+\DoxyCodeLine{64 \};}
+
+\end{DoxyCode}

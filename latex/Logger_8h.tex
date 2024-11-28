@@ -1,0 +1,101 @@
+\hypertarget{Logger_8h}{}\doxysection{Файл Logger.\+h}
+\label{Logger_8h}\index{Logger.h@{Logger.h}}
+
+
+Заголовочный файл класса \mbox{\hyperlink{classLogger}{Logger}} для ведения логов.  
+
+
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+Граф включаемых заголовочных файлов для Logger.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Logger_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Logger_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLogger}{Logger}}
+\begin{DoxyCompactList}\small\item\em Класс для ведения логов в файл. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \{ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}}
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81}{WARNING}}
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90}{ERROR}}
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}{CRITICAL}}
+ \}
+\begin{DoxyCompactList}\small\item\em Уровни логирования. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл класса \mbox{\hyperlink{classLogger}{Logger}} для ведения логов. 
+
+\begin{DoxyAuthor}{Автор}
+Грачев В.\+В. 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+18.\+11.\+2024 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}} 
+\index{Logger.h@{Logger.h}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!Logger.h@{Logger.h}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}
+
+
+
+Уровни логирования. 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFO@{INFO}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!INFO@{INFO}}}\mbox{\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}} 
+INFO&Информационное сообщение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!WARNING@{WARNING}}}\mbox{\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81}} 
+WARNING&Предупреждение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!ERROR@{ERROR}}}\mbox{\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90}} 
+ERROR&Ошибка \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CRITICAL@{CRITICAL}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!CRITICAL@{CRITICAL}}}\mbox{\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}} 
+CRITICAL&Критическая ошибка \\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22               \{}
+\DoxyCodeLine{23     \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806}{INFO}},    }
+\DoxyCodeLine{24     \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81}{WARNING}}, }
+\DoxyCodeLine{25     \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90}{ERROR}},   }
+\DoxyCodeLine{26     \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0}{CRITICAL}} }
+\DoxyCodeLine{27 \};}
+
+\end{DoxyCode}

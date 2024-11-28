@@ -1,0 +1,14 @@
+<map id="Communicator.h" name="Communicator.h">
+<area shape="rect" id="node1" title="Этот файл содержит определение класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="306,5,435,32"/>
+<area shape="rect" id="node2" href="$Logger_8h.html" title="Заголовочный файл класса Logger для ведения логов." alt="" coords="223,80,300,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,155,64,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="325,80,417,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="441,80,543,107"/>
+<area shape="rect" id="node12" title=" " alt="" coords="567,80,630,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,155,162,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="187,155,251,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="275,155,333,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="357,155,437,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="462,155,549,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="573,155,640,181"/>
+</map>

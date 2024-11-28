@@ -1,0 +1,74 @@
+\hypertarget{classHandlerVector}{}\doxysection{Класс Handler\+Vector}
+\label{classHandlerVector}\index{HandlerVector@{HandlerVector}}
+
+
+Класс для обработки целочисленных векторов.  
+
+
+
+
+{\ttfamily \#include $<$Handler\+Vector.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static int32\+\_\+t \mbox{\hyperlink{classHandlerVector_a37639c2a16be3009b2f14aaa49d94318}{process\+Vector}} (const std\+::vector$<$ int32\+\_\+t $>$ \&vector\+Values)
+\begin{DoxyCompactList}\small\item\em Вычисляет сумму квадратов элементов вектора. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для обработки целочисленных векторов. 
+
+Предоставляет статический метод process\+Vector для вычисления суммы квадратов элементов вектора. Обрабатывает возможные переполнения. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classHandlerVector_a37639c2a16be3009b2f14aaa49d94318}\label{classHandlerVector_a37639c2a16be3009b2f14aaa49d94318}} 
+\index{HandlerVector@{HandlerVector}!processVector@{processVector}}
+\index{processVector@{processVector}!HandlerVector@{HandlerVector}}
+\doxysubsubsection{\texorpdfstring{processVector()}{processVector()}}
+{\footnotesize\ttfamily int32\+\_\+t Handler\+Vector\+::process\+Vector (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int32\+\_\+t $>$ \&}]{vector\+Values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисляет сумму квадратов элементов вектора. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em vector\+Values} & Входной вектор целых чисел. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Сумма квадратов элементов вектора, преобразованная в int32\+\_\+t. Возвращает максимальное или минимальное значение int32\+\_\+t в случае переполнения. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                                                                            \{}
+\DoxyCodeLine{11     int64\_t sumOfSquares = 0;}
+\DoxyCodeLine{12     \textcolor{keyword}{const} int64\_t maxVal = std::numeric\_limits<int32\_t>::max();}
+\DoxyCodeLine{13     \textcolor{keyword}{const} int64\_t minVal = std::numeric\_limits<int32\_t>::min();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordflow}{for} (int32\_t value : vectorValues) \{}
+\DoxyCodeLine{16         int64\_t square = \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(value) * value;}
+\DoxyCodeLine{17         \textcolor{comment}{// Проверка на переполнение до сложения}}
+\DoxyCodeLine{18         \textcolor{keywordflow}{if} (sumOfSquares > maxVal -\/ square) \{}
+\DoxyCodeLine{19             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(maxVal); }
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21         sumOfSquares += square;}
+\DoxyCodeLine{22         \textcolor{comment}{// Проверка на переполнение после сложения}}
+\DoxyCodeLine{23         \textcolor{keywordflow}{if} (sumOfSquares > maxVal) \{}
+\DoxyCodeLine{24             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(maxVal);}
+\DoxyCodeLine{25         \}}
+\DoxyCodeLine{26         \textcolor{keywordflow}{if} (sumOfSquares < minVal) \{}
+\DoxyCodeLine{27             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(minVal);}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30     \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(sumOfSquares);}
+\DoxyCodeLine{31 \}}
+
+\end{DoxyCode}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{HandlerVector_8h}{Handler\+Vector.\+h}}\item 
+\mbox{\hyperlink{HandlerVector_8cpp}{Handler\+Vector.\+cpp}}\end{DoxyCompactItemize}

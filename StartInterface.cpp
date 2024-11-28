@@ -1,3 +1,7 @@
+/**
+ * @file StartInterface.cpp
+ * @brief Реализация класса Interface для обработки параметров командной строки.
+ */
 #include "StartInterface.h"
 #include <sstream>
 #include <iostream>
@@ -21,7 +25,6 @@ bool Interface::Parser(int argc, const char** argv) {
     po::store(po::parse_command_line(argc, argv, desc), vm);
      if (argc == 1) {
         std::cout << desc << std::endl;
-        return false;
     }
     if (vm.count("help")) {
         std::cout << desc << std::endl;

@@ -1,0 +1,6 @@
+<map id="Communicator.h" name="Communicator.h">
+<area shape="rect" id="node1" title="Этот файл содержит определение класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="161,5,290,32"/>
+<area shape="rect" id="node2" href="$Communicator_8cpp.html" title="Реализация класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="5,80,149,107"/>
+<area shape="rect" id="node3" href="$UnitTest_8cpp.html" title=" " alt="" coords="174,80,277,107"/>
+<area shape="rect" id="node4" href="$server_8cpp.html" title="Реализация класса Server." alt="" coords="301,80,390,107"/>
+</map>

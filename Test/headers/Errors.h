@@ -10,3 +10,11 @@ public:
     explicit DatabaseException(const char* what_arg)
         : std::invalid_argument(what_arg) {}
 };
+
+
+
+class CommunicatorException : public std::runtime_error {
+public:
+    explicit CommunicatorException(const std::string& message)
+        : std::runtime_error(message) {}
+};

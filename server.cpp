@@ -1,3 +1,7 @@
+/**
+ * @file server.cpp
+ * @brief Реализация класса Server.
+ */
 #include "server.h"
 
 #include "Communicator.h"

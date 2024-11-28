@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sumOfSquares: Файл Logger.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sumOfSquares<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#enum-members">Перечисления</a>  </div>
+  <div class="headertitle"><div class="title">Файл Logger.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Заголовочный файл класса <a class="el" href="classLogger.html" title="Класс для ведения логов в файл.">Logger</a> для ведения логов.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Logger.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="Logger_8h__incl.png" border="0" usemap="#aLogger_8h" alt=""/></div>
+<map name="aLogger_8h" id="aLogger_8h">
+<area shape="rect" title="Заголовочный файл класса Logger для ведения логов." alt="" coords="265,5,342,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,79,107"/>
+<area shape="rect" title=" " alt="" coords="103,80,167,107"/>
+<area shape="rect" title=" " alt="" coords="191,80,250,107"/>
+<area shape="rect" title=" " alt="" coords="274,80,333,107"/>
+<area shape="rect" title=" " alt="" coords="357,80,437,107"/>
+<area shape="rect" title=" " alt="" coords="461,80,548,107"/>
+<area shape="rect" title=" " alt="" coords="573,80,639,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="Logger_8h__dep__incl.png" border="0" usemap="#aLogger_8hdep" alt=""/></div>
+<map name="aLogger_8hdep" id="aLogger_8hdep">
+<area shape="rect" title="Заголовочный файл класса Logger для ведения логов." alt="" coords="386,5,463,32"/>
+<area shape="rect" href="Auth_8h.html" title="Файл содержит класс Authenticator для аутентификации пользователей." alt="" coords="46,155,110,181"/>
+<area shape="rect" href="UnitTest_8cpp.html" title=" " alt="" coords="323,229,425,256"/>
+<area shape="rect" href="ClientDataBase_8cpp.html" title="Реализация класса ClientDataBase." alt="" coords="185,155,336,181"/>
+<area shape="rect" href="ClientDataBase_8h.html" title="Заголовочный файл класса ClientDataBase, реализующего работу с базой данных клиентов." alt="" coords="139,80,273,107"/>
+<area shape="rect" href="Communicator_8h.html" title="Этот файл содержит определение класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="412,80,541,107"/>
+<area shape="rect" href="Logger_8cpp.html" title="Реализация класса Logger." alt="" coords="716,80,808,107"/>
+<area shape="rect" href="StartInterface_8h.html" title="Заголовочный файл класса Interface для обработки параметров командной строки." alt="" coords="627,155,750,181"/>
+<area shape="rect" href="server_8h.html" title="Заголовочный файл класса Server." alt="" coords="566,80,641,107"/>
+<area shape="rect" href="Auth_8cpp.html" title="Файл содержит реализацию класса Authenticator для аутентификации пользователей." alt="" coords="5,229,84,256"/>
+<area shape="rect" href="Communicator_8cpp.html" title="Реализация класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="109,229,253,256"/>
+<area shape="rect" href="server_8cpp.html" title="Реализация класса Server." alt="" coords="513,155,603,181"/>
+<area shape="rect" href="StartInterface_8cpp.html" title="Реализация класса Interface для обработки параметров командной строки." alt="" coords="686,229,825,256"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="579,229,662,256"/>
+</map>
+</div>
+</div>
+<p><a href="Logger_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html">Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Класс для ведения логов в файл.  <a href="classLogger.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:aca1fd1d8935433e6ba2e3918214e07f9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> { <a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>
+, <a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>
+, <a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>
+, <a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">CRITICAL</a>
+ }</td></tr>
+<tr class="memdesc:aca1fd1d8935433e6ba2e3918214e07f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Уровни логирования.  <a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">Подробнее...</a><br /></td></tr>
+<tr class="separator:aca1fd1d8935433e6ba2e3918214e07f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Заголовочный файл класса <a class="el" href="classLogger.html" title="Класс для ведения логов в файл.">Logger</a> для ведения логов. </p>
+<dl class="section author"><dt>Автор</dt><dd>Грачев В.В. </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>18.11.2024 </dd></dl>
+<dl class="section copyright"><dt>Авторство</dt><dd>ИБСТ ПГУ </dd></dl>
+</div><h2 class="groupheader">Перечисления</h2>
+<a id="aca1fd1d8935433e6ba2e3918214e07f9" name="aca1fd1d8935433e6ba2e3918214e07f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca1fd1d8935433e6ba2e3918214e07f9">&#9670;&nbsp;</a></span>LogLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Уровни логирования. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806" name="aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"></a>INFO&#160;</td><td class="fielddoc"><p >Информационное сообщение </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81" name="aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"></a>WARNING&#160;</td><td class="fielddoc"><p >Предупреждение </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90" name="aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"></a>ERROR&#160;</td><td class="fielddoc"><p >Ошибка </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0" name="aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0"></a>CRITICAL&#160;</td><td class="fielddoc"><p >Критическая ошибка </p>
+</td></tr>
+</table>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>              {</div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>,    </div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>, </div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>,   </div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">CRITICAL</a> </div>
+<div class="line"><span class="lineno">   27</span>};</div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdoc">Ошибка</div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdoc">Информационное сообщение</div><div class="ttdef"><b>Definition:</b> Logger.h:23</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdoc">Предупреждение</div><div class="ttdef"><b>Definition:</b> Logger.h:24</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">CRITICAL</a></div><div class="ttdeci">@ CRITICAL</div><div class="ttdoc">Критическая ошибка</div><div class="ttdef"><b>Definition:</b> Logger.h:26</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

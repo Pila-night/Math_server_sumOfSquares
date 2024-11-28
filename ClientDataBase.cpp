@@ -1,3 +1,7 @@
+/**
+ * @file ClientDataBase.cpp
+ * @brief Реализация класса ClientDataBase
+ */
 #include "ClientDataBase.h"
 #include "Logger.h"
 #include "Errors.h"

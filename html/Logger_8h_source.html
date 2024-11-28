@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sumOfSquares: Исходный файл Logger.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sumOfSquares<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Logger.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Logger_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;cstring&gt;</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">   22</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">   23</a></span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>,    </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">   24</a></span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>, </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">   25</a></span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>,   </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">CRITICAL</a> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">   27</a></span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classLogger.html">   36</a></span><span class="keyword">class </span><a class="code hl_class" href="classLogger.html">Logger</a> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="classLogger.html#a4f2ee02db1d03a83b6b9b43808e09f15">Logger</a>(<span class="keyword">const</span> std::string&amp; <a class="code hl_variable" href="classLogger.html#a7d2eb96ffbb512b79834c8d7313c69b7">filename</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogger.html#a751cd1a942f2bfce73ec61feaa439d22">open</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogger.html#afee2bab560c2db0190c980884d33868c">close</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_function" href="classLogger.html#acb668a9e186a25fbaad2e4af6d1ed00a">~Logger</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">log</a>(<a class="code hl_enumeration" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level, <span class="keyword">const</span> std::string&amp; message);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogger.html#a15bfbc50a348a24b8ff7c5d49feef1df">setLogFile</a>(<span class="keyword">const</span> std::string&amp; <a class="code hl_variable" href="classLogger.html#a7d2eb96ffbb512b79834c8d7313c69b7">filename</a>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    std::string <a class="code hl_function" href="classLogger.html#abc0185908102e8fb28a532a017f89b5f">getLogFile</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classLogger.html#aae7b79a065907f8da8280ec1f7295faa">GetIsOpen</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classLogger.html#a7d2eb96ffbb512b79834c8d7313c69b7">   80</a></span>    std::string <a class="code hl_variable" href="classLogger.html#a7d2eb96ffbb512b79834c8d7313c69b7">filename</a>;      </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classLogger.html#aeec6048ba3c8029a7bb999bc42418fe6">   81</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classLogger.html#aeec6048ba3c8029a7bb999bc42418fe6">is_open</a>;              </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLogger.html#af25ba4f4062cfc5a5e49e20d4f0bb2ec">handleError</a>(<span class="keyword">const</span> std::string&amp; error_message);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    std::string <a class="code hl_function" href="classLogger.html#a9797db48ffb0b05ec9bf89bd323a36c8">currentDateTime</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    std::string <a class="code hl_function" href="classLogger.html#a0a79e30928ea5190c804de90625df930">logLevelToString</a>(<a class="code hl_enumeration" href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classLogger.html#a040bd1e498724fbecef2fee3d529ce9e">   98</a></span>    std::ofstream <a class="code hl_variable" href="classLogger.html#a040bd1e498724fbecef2fee3d529ce9e">log_file</a>;    </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classLogger.html#a9e74a559ca8a34e2a0a66c5c8ac1e4fd">   99</a></span>    std::mutex <a class="code hl_variable" href="classLogger.html#a9e74a559ca8a34e2a0a66c5c8ac1e4fd">mutex_</a>;         </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdoc">Уровни логирования.</div><div class="ttdef"><b>Definition:</b> Logger.h:22</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdoc">Ошибка</div><div class="ttdef"><b>Definition:</b> Logger.h:25</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdoc">Информационное сообщение</div><div class="ttdef"><b>Definition:</b> Logger.h:23</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdoc">Предупреждение</div><div class="ttdef"><b>Definition:</b> Logger.h:24</div></div>
+<div class="ttc" id="aLogger_8h_html_aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0"><div class="ttname"><a href="Logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9acda21a4a072f2261f6d4ab596599f8b0">CRITICAL</a></div><div class="ttdeci">@ CRITICAL</div><div class="ttdoc">Критическая ошибка</div><div class="ttdef"><b>Definition:</b> Logger.h:26</div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdoc">Класс для ведения логов в файл.</div><div class="ttdef"><b>Definition:</b> Logger.h:36</div></div>
+<div class="ttc" id="aclassLogger_html_a040bd1e498724fbecef2fee3d529ce9e"><div class="ttname"><a href="classLogger.html#a040bd1e498724fbecef2fee3d529ce9e">Logger::log_file</a></div><div class="ttdeci">std::ofstream log_file</div><div class="ttdoc">Поток для записи в файл</div><div class="ttdef"><b>Definition:</b> Logger.h:98</div></div>
+<div class="ttc" id="aclassLogger_html_a0a79e30928ea5190c804de90625df930"><div class="ttname"><a href="classLogger.html#a0a79e30928ea5190c804de90625df930">Logger::logLevelToString</a></div><div class="ttdeci">std::string logLevelToString(LogLevel level)</div><div class="ttdoc">Преобразует уровень логирования в строковое представление.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:94</div></div>
+<div class="ttc" id="aclassLogger_html_a15bfbc50a348a24b8ff7c5d49feef1df"><div class="ttname"><a href="classLogger.html#a15bfbc50a348a24b8ff7c5d49feef1df">Logger::setLogFile</a></div><div class="ttdeci">void setLogFile(const std::string &amp;filename)</div><div class="ttdoc">Устанавливает новое имя файла для логирования.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:19</div></div>
+<div class="ttc" id="aclassLogger_html_a3d3f0801eeaf39b33a906ea8569c19b2"><div class="ttname"><a href="classLogger.html#a3d3f0801eeaf39b33a906ea8569c19b2">Logger::log</a></div><div class="ttdeci">void log(LogLevel level, const std::string &amp;message)</div><div class="ttdoc">Записывает сообщение в лог-файл.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:63</div></div>
+<div class="ttc" id="aclassLogger_html_a4f2ee02db1d03a83b6b9b43808e09f15"><div class="ttname"><a href="classLogger.html#a4f2ee02db1d03a83b6b9b43808e09f15">Logger::Logger</a></div><div class="ttdeci">Logger(const std::string &amp;filename)</div><div class="ttdoc">Конструктор класса Logger.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:14</div></div>
+<div class="ttc" id="aclassLogger_html_a751cd1a942f2bfce73ec61feaa439d22"><div class="ttname"><a href="classLogger.html#a751cd1a942f2bfce73ec61feaa439d22">Logger::open</a></div><div class="ttdeci">void open()</div><div class="ttdoc">Открывает файл для записи логов. Если файл не может быть открыт, выводится сообщение об ошибке и созд...</div><div class="ttdef"><b>Definition:</b> Logger.cpp:31</div></div>
+<div class="ttc" id="aclassLogger_html_a7d2eb96ffbb512b79834c8d7313c69b7"><div class="ttname"><a href="classLogger.html#a7d2eb96ffbb512b79834c8d7313c69b7">Logger::filename</a></div><div class="ttdeci">std::string filename</div><div class="ttdoc">Имя файла для логирования</div><div class="ttdef"><b>Definition:</b> Logger.h:80</div></div>
+<div class="ttc" id="aclassLogger_html_a9797db48ffb0b05ec9bf89bd323a36c8"><div class="ttname"><a href="classLogger.html#a9797db48ffb0b05ec9bf89bd323a36c8">Logger::currentDateTime</a></div><div class="ttdeci">std::string currentDateTime()</div><div class="ttdoc">Возвращает текущую дату и время в формате YYYY-MM-DD HH:MM:SS.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:84</div></div>
+<div class="ttc" id="aclassLogger_html_a9e74a559ca8a34e2a0a66c5c8ac1e4fd"><div class="ttname"><a href="classLogger.html#a9e74a559ca8a34e2a0a66c5c8ac1e4fd">Logger::mutex_</a></div><div class="ttdeci">std::mutex mutex_</div><div class="ttdoc">Мьютекс для обеспечения потокобезопасности</div><div class="ttdef"><b>Definition:</b> Logger.h:99</div></div>
+<div class="ttc" id="aclassLogger_html_aae7b79a065907f8da8280ec1f7295faa"><div class="ttname"><a href="classLogger.html#aae7b79a065907f8da8280ec1f7295faa">Logger::GetIsOpen</a></div><div class="ttdeci">bool GetIsOpen() const</div><div class="ttdoc">Проверяет открыт ли файл для логирования.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:104</div></div>
+<div class="ttc" id="aclassLogger_html_abc0185908102e8fb28a532a017f89b5f"><div class="ttname"><a href="classLogger.html#abc0185908102e8fb28a532a017f89b5f">Logger::getLogFile</a></div><div class="ttdeci">std::string getLogFile() const</div><div class="ttdoc">Возвращает текущее имя файла для логирования.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:106</div></div>
+<div class="ttc" id="aclassLogger_html_acb668a9e186a25fbaad2e4af6d1ed00a"><div class="ttname"><a href="classLogger.html#acb668a9e186a25fbaad2e4af6d1ed00a">Logger::~Logger</a></div><div class="ttdeci">~Logger()</div><div class="ttdoc">Деструктор класса Logger. Закрывает файл логов.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:27</div></div>
+<div class="ttc" id="aclassLogger_html_aeec6048ba3c8029a7bb999bc42418fe6"><div class="ttname"><a href="classLogger.html#aeec6048ba3c8029a7bb999bc42418fe6">Logger::is_open</a></div><div class="ttdeci">bool is_open</div><div class="ttdoc">Флаг, указывающий открыт ли файл</div><div class="ttdef"><b>Definition:</b> Logger.h:81</div></div>
+<div class="ttc" id="aclassLogger_html_af25ba4f4062cfc5a5e49e20d4f0bb2ec"><div class="ttname"><a href="classLogger.html#af25ba4f4062cfc5a5e49e20d4f0bb2ec">Logger::handleError</a></div><div class="ttdeci">void handleError(const std::string &amp;error_message)</div><div class="ttdoc">Обрабатывает ошибку, выводя сообщение на стандартный поток ошибок и выбрасывая исключение.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:79</div></div>
+<div class="ttc" id="aclassLogger_html_afee2bab560c2db0190c980884d33868c"><div class="ttname"><a href="classLogger.html#afee2bab560c2db0190c980884d33868c">Logger::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Закрывает файл для записи логов.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:55</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>
