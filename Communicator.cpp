@@ -11,7 +11,7 @@
 #include <string>
 #include <sys/ioctl.h>
 #include <unistd.h>
-
+using namespace std;
 Communicator::Communicator(int socket, const std::string& dataFile, Logger& logger)
     : dataFile(dataFile)
     , logger(logger)
@@ -41,6 +41,7 @@ void Communicator::handleClient()
     }
     logger.log(INFO, "Клиент прислал логин: " + string(login));
     Authenticator authenticator(dataFile, logger);
+    cout << "Сервер лег" <<endl;
     if(authenticator.isLoginExists(login) == false) {
         logger.log(ERROR, "Клиент не прошел аутентификацию");
         const string errMsg = "ERR";

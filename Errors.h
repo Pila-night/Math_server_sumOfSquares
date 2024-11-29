@@ -14,21 +14,44 @@
  * @class DatabaseException
  * @brief Исключение, возникающее при ошибках работы с базой данных.
  */
+// Базовый класс для всех исключений базы данных
 class DatabaseException : public std::invalid_argument {
 public:
-    /**
-     * @brief Конструктор DatabaseException.
-     * @param what_arg Текстовое сообщение, описывающее ошибку.
-     */
     explicit DatabaseException(const std::string& what_arg)
         : std::invalid_argument(what_arg) {}
 
-    /**
-     * @brief Конструктор DatabaseException.
-     * @param what_arg Текстовое сообщение, описывающее ошибку.
-     */
     explicit DatabaseException(const char* what_arg)
         : std::invalid_argument(what_arg) {}
+};
+
+// Класс для некритических исключений
+class NonCriticalDatabaseException : public DatabaseException {
+public:
+    explicit NonCriticalDatabaseException(const std::string& what_arg)
+        : DatabaseException(what_arg) {}
+
+    explicit NonCriticalDatabaseException(const char* what_arg)
+        : DatabaseException(what_arg) {}
+};
+
+// Класс для критических исключений
+class CriticalDatabaseException : public DatabaseException {
+public:
+    explicit CriticalDatabaseException(const std::string& what_arg)
+        : DatabaseException(what_arg) {}
+
+    explicit CriticalDatabaseException(const char* what_arg)
+        : DatabaseException(what_arg) {}
+};
+
+// Класс для предупреждений
+class WarningDatabaseException : public DatabaseException {
+public:
+    explicit WarningDatabaseException(const std::string& what_arg)
+        : DatabaseException(what_arg) {}
+
+    explicit WarningDatabaseException(const char* what_arg)
+        : DatabaseException(what_arg) {}
 };
 
 /**

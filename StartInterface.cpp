@@ -3,6 +3,7 @@
  * @brief Реализация класса Interface для обработки параметров командной строки.
  */
 #include "StartInterface.h"
+#include "ClientDataBase.h"
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -63,6 +64,17 @@ void Interface::processCommands(int argc, const char** argv) {
     logger.log(INFO, "Файл с базой клиентов: " + params.dataFileName);
     logger.log(INFO, "Файл с журналом работы: " + logger.getLogFile());
     logger.log(INFO, "Порт: " + std::to_string(params.port));
+    try {
+    ClientDataBase db(params.dataFileName);
+    }catch (const CriticalDatabaseException& e) {
+        logger.log(CRITICAL, std::string("Критическая ошибка базы данных: ") + e.what());
+    } catch (const WarningDatabaseException& e) {
+        logger.log(WARNING, std::string("Предупреждение базы данных: ") + e.what());
+    } catch (const NonCriticalDatabaseException& e) {
+        logger.log(ERROR, std::string("Некритическая ошибка базы данных: ") + e.what());
+    } catch (const std::exception& e) {
+        logger.log(CRITICAL, std::string("Неизвестная ошибка: ") + e.what());
+    }
 }
 
 const Params& Interface::getParams() const { return params; } 

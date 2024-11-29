@@ -4,7 +4,8 @@
  */
 #include "ClientDataBase.h"
 #include "Logger.h"
-#include "Errors.h"
+#include <sstream>
+
 using namespace std;
 ClientDataBase::ClientDataBase(const string& filename)
 {
@@ -16,40 +17,53 @@ bool ClientDataBase::isLoginExists(const string& login)
     return database.find(login) != database.end();                   
 }
 
-void ClientDataBase::loadDatabase(const string& filename) {
-    ifstream file(filename);
-    if (file.is_open()) {
-        string line;
-        while (getline(file, line, ':')) {
-            string login = line;
-            string password;
-            getline(file, password); 
-            password.erase(password.find_last_not_of(" \t\r\n") + 1);
-            if (login.empty()) {
-                std::string message = "Предупреждение: Обнаружен пароль без логина в базе данных";
-                throw DatabaseException(message);
-            }
-            if (password.empty()) {
-                string message =  "Предупреждение: Обнаружен логин без пароля в базе данных";
-                throw DatabaseException(message);
-            }
-            
-            if (login.empty() || password.empty()) {
-                continue; 
-            }
+void ClientDataBase::loadDatabase(const std::string& filename) {
+    std::ifstream file(filename);
 
-            database[login] = password; 
+    if (!file.is_open()) {
+        throw CriticalDatabaseException("Error opening file: " + filename);
+    }
+
+    std::string line;
+    int validLines = 0;
+    this->database.clear(); 
+
+    while (std::getline(file, line)) {
+        line.erase(0, line.find_first_not_of(" \t\r\n"));
+        line.erase(line.find_last_not_of(" \t\r\n") + 1);
+
+        if (line.empty()) {
+            continue; 
         }
 
-        file.close();
-        if (database.empty()) {
-            throw std::runtime_error("Критическая ошибка: База данных пуста после загрузки из файла " + filename);
+        size_t delimiterPos = line.find(':');
+        if (delimiterPos == std::string::npos) {
+            continue; 
         }
-    } else {
-        cerr << "Ошибка: Не удалось открыть файл " << filename << endl;
-        std::string error_message = strerror(errno);
-        std::string exception_message = "Критическая ошибка: Не удалось открыть файл " + filename + " " + error_message;
-        throw std::system_error(errno, std::generic_category(), exception_message);
+
+        std::string login = line.substr(0, delimiterPos);
+        std::string password = line.substr(delimiterPos + 1);
+        login.erase(0, login.find_first_not_of(" \t\r\n"));
+        login.erase(login.find_last_not_of(" \t\r\n") + 1);
+        password.erase(0, password.find_first_not_of(" \t\r\n"));
+        password.erase(password.find_last_not_of(" \t\r\n") + 1);
+
+        if (login.empty() || password.empty()) {
+            continue; 
+        }
+        
+        if (this->database.count(login)) {
+            continue; 
+        }
+
+        this->database[login] = password;
+        validLines++;
+    }
+    
+    file.close();
+    
+    if (validLines == 0) {
+        throw CriticalDatabaseException("Critical Error: No valid login-password pairs found in the database file.");
     }
 }
 

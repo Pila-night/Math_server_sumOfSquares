@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
+#include "Errors.h"
 
 /**
  * @class ClientDataBase
@@ -61,5 +62,5 @@ public:
      * @param login Логин.
      * @return Константная ссылка на строку, содержащую пароль.
      */
-    const std::string& operator[](const std::string& login) const;
+const std::string& operator[](const std::string& login) const;
 };
