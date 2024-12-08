@@ -6,18 +6,21 @@ DEBUG_FLAGS   = -g -O0 -Wall -Iheaders
 RELEASE_EXEC  = sumOfSquares
 DEBUG_EXEC    = sumOfSquares-dbg
 SOURCES       = main.cpp Auth.cpp ClientDataBase.cpp Communicator.cpp HandlerVector.cpp Logger.cpp server.cpp StartInterface.cpp
-LIBARY        = -lboost_program_options -lcryptopp
-all: debug release
+LIBRARY       = -lboost_program_options -lcryptopp
 
-debug: $(DEBUG_EXEC)
 
-$(DEBUG_EXEC): $(SOURCES)
-	$(Compiler) $(DEBUG_FLAGS) $(SOURCES) -o $(DEBUG_EXEC) $(LIBARY)
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: release
 
 release: $(RELEASE_EXEC)
 
-$(RELEASE_EXEC): $(SOURCES)
-	$(Compiler) $(RELEASE_FLAGS) $(SOURCES) -o $(RELEASE_EXEC) $(LIBARY)
+$(RELEASE_EXEC): $(OBJECTS)
+	$(Compiler) $(RELEASE_FLAGS) $(OBJECTS) -o $(RELEASE_EXEC) $(LIBRARY)
+
+
+%.o: %.cpp
+	$(Compiler) $(RELEASE_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(RELEASE_EXEC) $(DEBUG_EXEC)
+	rm -f $(RELEASE_EXEC) $(DEBUG_EXEC) $(OBJECTS)
