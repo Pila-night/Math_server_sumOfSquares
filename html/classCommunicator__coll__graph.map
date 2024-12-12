@@ -1,4 +1,0 @@
-<map id="Communicator" name="Communicator">
-<area shape="rect" id="node1" title="Этот класс отвечает за обработку коммуникации с клиентом. Он принимает векторы данных от клиента,..." alt="" coords="5,95,124,121"/>
-<area shape="rect" id="node2" href="$classLogger.html" title="Класс для ведения логов в файл." alt="" coords="31,5,98,32"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="Errors.h" name="Errors.h">
-<area shape="rect" id="node1" title="Этот файл содержит определение класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="130,5,202,32"/>
-<area shape="rect" id="node2" href="$ClientDataBase_8cpp.html" title="Реализация класса ClientDataBase." alt="" coords="5,80,156,107"/>
-<area shape="rect" id="node3" href="$Communicator_8cpp.html" title="Реализация класса Communicator, отвечающего за коммуникацию с клиентами." alt="" coords="181,80,325,107"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="Interface" name="Interface">
-<area shape="rect" id="node1" title="Класс для обработки параметров командной строки и инициализации сервера." alt="" coords="47,95,127,121"/>
-<area shape="rect" id="node2" href="$structParams.html" title="Структура для хранения параметров, полученных из командной строки." alt="" coords="5,5,76,32"/>
-<area shape="rect" id="node3" href="$classLogger.html" title="Класс для ведения логов в файл." alt="" coords="101,5,167,32"/>
-</map>
