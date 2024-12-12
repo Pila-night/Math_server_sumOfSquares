@@ -65,13 +65,9 @@ void Interface::processCommands(int argc, const char** argv) {
     logger.log(INFO, "Файл с журналом работы: " + logger.getLogFile());
     logger.log(INFO, "Порт: " + std::to_string(params.port));
     try {
-    ClientDataBase db(params.dataFileName);
+    ClientDataBase db(params.dataFileName, logger, true);
     }catch (const CriticalDatabaseException& e) {
         logger.log(CRITICAL, std::string("Критическая ошибка базы данных: ") + e.what());
-    } catch (const WarningDatabaseException& e) {
-        logger.log(WARNING, std::string("Предупреждение базы данных: ") + e.what());
-    } catch (const NonCriticalDatabaseException& e) {
-        logger.log(ERROR, std::string("Некритическая ошибка базы данных: ") + e.what());
     } catch (const std::exception& e) {
         logger.log(CRITICAL, std::string("Неизвестная ошибка: ") + e.what());
     }

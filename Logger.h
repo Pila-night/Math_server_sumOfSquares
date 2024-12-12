@@ -7,8 +7,8 @@
  * @copyright ИБСТ ПГУ
  */
 #pragma once
-#include <fstream>
 #include <mutex>
+#include <fstream>
 #include <string>
 #include <ctime>
 #include <iostream>
@@ -97,4 +97,5 @@ private:
     std::string logLevelToString(LogLevel level);
     std::ofstream log_file;    ///< Поток для записи в файл
     std::mutex mutex_;         ///< Мьютекс для обеспечения потокобезопасности
+
 };

@@ -1,23 +1,22 @@
-/**
- * @file ClientDataBase.cpp
- * @brief Реализация класса ClientDataBase
- */
 #include "ClientDataBase.h"
 #include "Logger.h"
 #include <sstream>
+#include <fstream>
+#include <unordered_map>
+#include <iostream>
+#include <stdexcept>
 
 using namespace std;
-ClientDataBase::ClientDataBase(const string& filename)
-{
-    loadDatabase(filename);
+
+ClientDataBase::ClientDataBase(const std::string& filename, Logger& log, bool one_start) {
+    loadDatabase(filename, log, one_start);
 }
 
-bool ClientDataBase::isLoginExists(const string& login)
-{
+bool ClientDataBase::isLoginExists(const string& login) const{
     return database.find(login) != database.end();                   
 }
 
-void ClientDataBase::loadDatabase(const std::string& filename) {
+void ClientDataBase::loadDatabase(const std::string& filename, Logger& logger, bool one_start) {
     std::ifstream file(filename);
 
     if (!file.is_open()) {
@@ -25,8 +24,8 @@ void ClientDataBase::loadDatabase(const std::string& filename) {
     }
 
     std::string line;
-    int validLines = 0;
     this->database.clear(); 
+    bool hasValidPair = false; 
 
     while (std::getline(file, line)) {
         line.erase(0, line.find_first_not_of(" \t\r\n"));
@@ -43,36 +42,32 @@ void ClientDataBase::loadDatabase(const std::string& filename) {
 
         std::string login = line.substr(0, delimiterPos);
         std::string password = line.substr(delimiterPos + 1);
+        
         login.erase(0, login.find_first_not_of(" \t\r\n"));
         login.erase(login.find_last_not_of(" \t\r\n") + 1);
         password.erase(0, password.find_first_not_of(" \t\r\n"));
         password.erase(password.find_last_not_of(" \t\r\n") + 1);
 
         if (login.empty() || password.empty()) {
-            continue; 
-        }
-        
-        if (this->database.count(login)) {
+          	if(one_start == true){
+            logger.log(WARNING, "Обнаружена пара с пустым логином или паролем в строчке: " + line);
+            }
             continue; 
         }
 
         this->database[login] = password;
-        validLines++;
+        hasValidPair = true; 
     }
-    
     file.close();
-    
-    if (validLines == 0) {
-        throw CriticalDatabaseException("Critical Error: No valid login-password pairs found in the database file.");
+    if (!hasValidPair) {        throw CriticalDatabaseException("Не найдено ни одной валидной пары логин:пароль");
     }
 }
 
-std::string& ClientDataBase::operator[](const std::string& login)
-{
+std::string& ClientDataBase::operator[](const std::string& login) {
     return database[login]; 
 }
 
-const std::string& ClientDataBase::operator[](const std::string& login) const 
-{
+const std::string& ClientDataBase::operator[](const std::string& login) const {
     return database.at(login); 
 }
+
