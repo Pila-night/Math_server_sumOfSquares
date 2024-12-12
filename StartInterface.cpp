@@ -44,8 +44,8 @@ void Interface::processCommands(int argc, const char** argv) {
     logger.setLogFile(params.logFileName);
     logger.open();
 
-    if (params.port < 0 || params.port > 65535) {
-        std::string error_message = "Неверный порт: " + std::to_string(params.port) + ". Порт должен быть в диапазоне от 0 до 65535";
+    if (params.port < 1 || params.port > 65535) {
+        std::string error_message = "Неверный порт: " + std::to_string(params.port) + ". Порт должен быть в диапазоне от 1 до 65535";
         logger.log(CRITICAL, error_message);
         throw std::runtime_error(error_message);
     }
