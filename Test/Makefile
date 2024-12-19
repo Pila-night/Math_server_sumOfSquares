@@ -1,8 +1,8 @@
 .PHONY: all debug release clean
 
 Compiler = g++
-RELEASE_FLAGS = -O2 -Wall -DNDEBUG -Iheaders
-DEBUG_FLAGS   = -g -O0 -Wall -Iheaders
+RELEASE_FLAGS = -O2 -Wall -DNDEBUG 
+DEBUG_FLAGS   = -g -O0 -Wall 
 RELEASE_EXEC  = unit
 DEBUG_EXEC    = unit-dbg
 SOURCES       = UnitTest.cpp Auth.cpp ClientDataBase.cpp Communicator.cpp HandlerVector.cpp Logger.cpp server.cpp StartInterface.cpp

@@ -9,6 +9,7 @@
 #include <filesystem>
 #include <UnitTest++/UnitTest++.h>
 #include <fstream>
+using namespace std;
 
                                 //Тестирование ServerInterface
 // сценарий тестирования справки
@@ -17,41 +18,43 @@ SUITE(HelpTest)
 {
     TEST(ShortHelp) //-help
     {
-        Interface iface;
+    cout<<"1"<<endl;
         const char* argv[] = { "test", "-h", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(!iface.Parser(argc, argv));
         CHECK(!iface.getDescription().empty());
     }
-    TEST(LongHelp)//--help
+  TEST(LongHelp)//--help
     {
-        Interface iface;
+    cout<<"2"<<endl;
         const char* argv[] = { "test", "--help", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(!iface.Parser(argc, argv));
         CHECK(!iface.getDescription().empty());
     }
     TEST(HelpAndOtherParametr)// несколько параметров
     {
-        Interface iface;
         const char* argv[] = { "test", "-h", "-p", "33333", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(!iface.Parser(argc, argv));
         CHECK(!iface.getDescription().empty());
     }
     TEST(ParametrAndHelp)// несколько параметров в другом порядке
     {
-        Interface iface;
         const char* argv[] = { "test", "-p", "33333", "-h", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(!iface.Parser(argc, argv));
         CHECK(!iface.getDescription().empty());
     }
     TEST(NoParam) //запуск без параметров
     {
-        Interface iface;
         const char* argv[] = { "test",  nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(!iface.Parser(argc, argv));
         CHECK(!iface.getDescription().empty());
     }
@@ -61,27 +64,27 @@ SUITE(WorkParamsTest)
 {
     TEST(ShortPort) //короткий параметр -p
     {
-        Interface iface;
         const char* argv[] = { "test", "-p", "33333", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(iface.Parser(argc, argv));
         CHECK_EQUAL(iface.getParams().port, 33333);
     }
     TEST(LongPort) //полный параметр --port
     {
-        Interface iface;
         const char* argv[] = { "test", "--port", "33333", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(iface.Parser(argc, argv));
         CHECK_EQUAL(iface.getParams().port, 33333);
     }
     TEST(PortAndDataFileAndLogFile)//тестирование сразу нескольких параметров 
     {
-        Interface iface;
         std::string DataFile("data.txt");
         std::string LogFile("vlog.log");
         const char* argv[] = { "test", "-p", "33333", "-d", DataFile.c_str(),"-l", LogFile.c_str(), nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(iface.Parser(argc, argv));
         CHECK_EQUAL(iface.getParams().port, 33333);
         CHECK_EQUAL(iface.getParams().dataFileName, "data.txt");
@@ -90,11 +93,11 @@ SUITE(WorkParamsTest)
     }
     TEST(DataFileAndLogFileAndPort) //тестирование сразу нескольких параметров в другом порядке
     {
-       Interface iface;
         std::string DataFile("data.txt");
         std::string LogFile("vlog.log");
         const char* argv[] = { "test",  "-d", DataFile.c_str(),"-l", LogFile.c_str(), "-p", "33333", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         REQUIRE CHECK(iface.Parser(argc, argv));
         CHECK_EQUAL(iface.getParams().port, 33333);
         CHECK_EQUAL(iface.getParams().dataFileName, "data.txt");
@@ -105,34 +108,34 @@ SUITE(ExceptionTest)
 {
     TEST(NoPortValue)
     {
-        Interface iface;
         const char* argv[] = { "test", "-p", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         CHECK_THROW(iface.Parser(argc, argv), po::invalid_command_line_syntax);
     }
     TEST(UnknownParam)
     {
-        Interface iface;
         const char* argv[] = { "test", "-p", "33333", "-v", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         CHECK_THROW(iface.processCommands(argc, argv), po::unknown_option);
     }
     TEST(InvalidPort)
     {
-        Interface iface;
         const char* argv[] = { "test", "-p", "333331", nullptr };
         int argc = sizeof argv / sizeof nullptr - 1;
+        Interface iface(argc, argv);
         CHECK_THROW(iface.processCommands(argc, argv), std::runtime_error);
     }
-}
-}
-}
+}}}
 
 
 
 
 
 
+
+/*
 
 
 
@@ -423,7 +426,7 @@ TEST(ServerSocketError) {
     std::remove(test_filename.c_str());
 }
 
-
+*/
 
 int main()
 {

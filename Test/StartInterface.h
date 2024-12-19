@@ -47,14 +47,14 @@ public:
      * @param argv Массив аргументов.
      * @return true, если параметры успешно спарсены, false в противном случае (например, если был передан ключ --help).
      */
-    bool Parser();
+    bool Parser(int argc, const char** argv);
     /**
      * @brief Обрабатывает параметры командной строки, инициализирует логгер и проверяет корректность параметров, запускает сервер.
      * @param argc Количество аргументов.
      * @param argv Массив аргументов.
      * @throw std::runtime_error При некорректном порте или отсутствии файла с данными клиентов.
      */
-    void processCommands();
+    void processCommands(int argc, const char** argv);
     /**
      * @brief Возвращает константную ссылку на структуру параметров.
      * @return Константная ссылка на структуру Params.
@@ -81,11 +81,8 @@ public:
      */
     string getDescription();
 private:
-
     Params params;          ///< Структура для хранения параметров
-    Logger logger; 
-        int argc;
-    const char** argv;         ///< Объект для логирования
+    Logger logger;          ///< Объект для логирования
     po::options_description desc; ///< Описание параметров командной строки
     po::variables_map vm;   ///< Хранилище для распарсенных параметров
 };

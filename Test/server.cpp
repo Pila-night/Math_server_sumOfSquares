@@ -1,3 +1,7 @@
+/**
+ * @file server.cpp
+ * @brief Реализация класса Server.
+ */
 #include "server.h"
 
 #include "Communicator.h"
@@ -23,7 +27,7 @@ Server::Server(int port, const std::string& data, Logger& logger)
 	if (port < 1 || port > 65535) {
         throw std::system_error(EINVAL, std::generic_category(), "Неправильный порт: " + to_string(port));
     }
-    logger.log(INFO, "Создание сервера на порту " + std::to_string(port));
+    logger.log(INFO, "Запуск сервера на порту " + std::to_string(port));
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if(server_socket == -1) {

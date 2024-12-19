@@ -10,7 +10,8 @@
 
 namespace po = boost::program_options;
 
-Interface::Interface() : logger("/var/log/vcalc.log") {
+Interface::Interface(int argc, const char** argv) 
+    : logger("/var/log/vcalc.log"), argc(argc), argv(argv) { // Инициализация членов
     params.dataFileName = "/etc/vcalc.conf"; 
     params.logFileName = "/var/log/vcalc.log"; 
     params.port = 33333; 
@@ -22,22 +23,22 @@ Interface::Interface() : logger("/var/log/vcalc.log") {
         ("port,p", po::value<int>(&params.port)->default_value(33333), "Порт");
 }
 
-bool Interface::Parser(int argc, const char** argv) {
+bool Interface::Parser() {
     po::store(po::parse_command_line(argc, argv, desc), vm);
-     if (argc == 1) {
+    if (argc == 1) {
         std::cout << desc << std::endl;
     }
     if (vm.count("help")) {
         std::cout << desc << std::endl;
         return false;
     }
-    
     po::notify(vm);
     return true;
 }
 
-void Interface::processCommands(int argc, const char** argv) {
-    if (!Parser(argc, argv)) {
+void Interface::processCommands() {
+    
+    if (!Parser()) { 
         exit(1);
     }
 
@@ -64,15 +65,16 @@ void Interface::processCommands(int argc, const char** argv) {
     logger.log(INFO, "Файл с базой клиентов: " + params.dataFileName);
     logger.log(INFO, "Файл с журналом работы: " + logger.getLogFile());
     logger.log(INFO, "Порт: " + std::to_string(params.port));
+    
     try {
-    ClientDataBase db(params.dataFileName, logger, true);
-    }catch (const CriticalDatabaseException& e) {
+        ClientDataBase db(params.dataFileName, logger, true);
+    } catch (const CriticalDatabaseException& e) {
         logger.log(CRITICAL, std::string("Критическая ошибка базы данных: ") + e.what());
     } catch (const std::exception& e) {
         logger.log(CRITICAL, std::string("Неизвестная ошибка: ") + e.what());
     }
-}
 
+}
 const Params& Interface::getParams() const { return params; } 
 
 int Interface::getPort() const {

@@ -1,3 +1,7 @@
+/**
+ * @file Logger.cpp
+ * @brief Реализация класса Logger.
+ */
 #include "Logger.h"
 #include <stdexcept>
 #include <iostream>
@@ -30,14 +34,17 @@ void Logger::open() {
         log_file.open(filename, std::ios::app);
         if (!log_file.is_open()) {
             std::string error_message = "Не удалось получить доступ к " + filename + ": " + strerror(errno) + 
-                                         ". В директории запуска сервера создан файл с логами: vcalc.log";
+                                         ". Попытка создания файла с логами в /tmp.";
             std::cout << error_message << std::endl;
-            log_file.open("vcalc.log", std::ios::app);
+
+
+            std::string tmp_filename = "/tmp/vcalc.log";
+            log_file.open(tmp_filename, std::ios::app);
             if (!log_file.is_open()) {
-                handleError("Не удалось открыть файл журнала: vcalc.log");
+                handleError("Не удалось открыть файл журнала: " + tmp_filename);
             } else {
                 is_open = true;
-                this->filename = "vcalc.log"; 
+                this->filename = tmp_filename; 
             }
         } else {
             is_open = true;
